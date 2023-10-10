@@ -1,9 +1,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { coreApi } from "@/lib";
+import { useAuthStore } from "@/modules/auth/store/auth.js";
 
 export function useAuth() {
     const router = useRouter(); // Acceder al objeto del enrutador de Vue
+    const auth = useAuthStore();
 
     let formInputs = ref({
         email: "",
@@ -11,22 +12,10 @@ export function useAuth() {
     });
 
     const loginValidated = async () => {
-        try {
-            // Realizar una solicitud HTTP para actualizar el rol del usuario
-            const response = await coreApi("/validated", "POST", JSON.stringify({
-                email: formInputs.value.email,
-                password: formInputs.value.password,
-            })); 
-
-            const result = await response.json();
-
-            // Redirigir a una ruta según el estatus de la respuesta
-            result.status
-                ? router.push({ name: "module-home" })
-                : router.push({ name: "auth-login" });
-        } catch (error) {
-            console.log(error);
-        }
+        const response = await auth.setLogin(formInputs.value.email, formInputs.value.password);
+        response.status === 200
+            ? router.push({ name: "module-home" })
+            : router.push({ name: "auth-login" });
     };
 
     // Devolver las referencias reactivas como resultado del composable
