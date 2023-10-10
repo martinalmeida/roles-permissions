@@ -1,23 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SesionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
+// Route app initialize
 Route::get('/', function () {
     return view('app');
+})->name('login');
+
+// Routes for login and logout
+Route::controller(SesionController::class)->group(function () {
+    Route::post('/validated', 'validated');
+    Route::get('/logout', 'logout');
 });
 
-
+// Routes for vue.js app
 Route::get('/{pathMatch}', function () {
     return view('app');
-})->where('pathMatch', ".*");
+})->where('pathMatch', ".*")->middleware('auth');

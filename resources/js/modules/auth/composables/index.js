@@ -1,0 +1,1 @@
+export { useAuth } from "@/modules/auth/composables/useAuth.js";
