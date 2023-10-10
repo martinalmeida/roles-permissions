@@ -1,0 +1,1 @@
+export { coreApi } from "@/lib/core/coreApi.js";

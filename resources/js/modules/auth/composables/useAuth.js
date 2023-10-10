@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { coreApi } from "@/lib";
 
 export function useAuth() {
     const router = useRouter(); // Acceder al objeto del enrutador de Vue
@@ -12,19 +13,11 @@ export function useAuth() {
     const loginValidated = async () => {
         try {
             // Realizar una solicitud HTTP para actualizar el rol del usuario
-            const response = await fetch("/validated", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-csrf-token": document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
-                },
-                body: JSON.stringify({
-                    email: formInputs.value.email,
-                    password: formInputs.value.password,
-                }),
-            });
+            const response = await coreApi("/validated", "POST", JSON.stringify({
+                email: formInputs.value.email,
+                password: formInputs.value.password,
+            })); 
+
             const result = await response.json();
 
             // Redirigir a una ruta según el estatus de la respuesta
