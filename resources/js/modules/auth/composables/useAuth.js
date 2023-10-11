@@ -3,10 +3,12 @@ import { useRouter } from "vue-router";
 import { useAuthStore } from "@/modules/auth/store/auth.js";
 
 export function useAuth() {
-    const router = useRouter(); // Acceder al objeto del enrutador de Vue
+    const router = useRouter();
     const auth = useAuthStore();
 
-    let formInputs = ref({
+    const alert = ref("");
+
+    const formInputs = ref({
         email: "",
         password: "",
     });
@@ -15,9 +17,11 @@ export function useAuth() {
         const response = await auth.setLogin(formInputs.value.email, formInputs.value.password);
         response.status === 200
             ? router.push({ name: "module-home" })
-            : router.push({ name: "auth-login" });
+            : alert.value = response.message;
     };
 
+    const closeModal = () => alert.value = "";
+
     // Devolver las referencias reactivas como resultado del composable
-    return { formInputs, loginValidated };
+    return { alert, formInputs, loginValidated, closeModal };
 }

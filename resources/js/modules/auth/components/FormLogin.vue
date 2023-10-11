@@ -3,8 +3,9 @@ import { useAuth } from "@/modules/auth/composables";
 
 import Input from "@/modules/shared/components/Input.vue";
 import Button from "@/modules/shared/components/Button.vue";
+import Modal from "@/modules/shared/components/Modal.vue";
 
-const { formInputs, loginValidated } = useAuth();
+const { alert, formInputs, loginValidated, closeModal } = useAuth();
 </script>
 
 <template>
@@ -27,4 +28,13 @@ const { formInputs, loginValidated } = useAuth();
             @click="loginValidated"
         ></Button>
     </form>
+    <Modal
+        v-if="alert"
+        title="Solicitud fallida!"
+        close="Cerrar"
+        type="danger"
+        @close-event="closeModal"
+    >
+        {{ alert }}
+    </Modal>
 </template>
