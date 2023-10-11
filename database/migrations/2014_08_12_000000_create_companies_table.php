@@ -15,12 +15,12 @@ return new class extends Migration {
             $table->integer('digito');
             $table->string('nombre');
             $table->string('representante');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->string('direccion');
             $table->string('correo');
             $table->string('pais')->default('COLOMBIA');
             $table->string('ciudad')->nullable();
-            $table->integer('contacto')->nullable();
+            $table->bigInteger('contacto')->nullable();
             $table->string('email_tec')->nullable();
             $table->string('email_logis')->nullable();
             $table->string('content_type')->nullable();
