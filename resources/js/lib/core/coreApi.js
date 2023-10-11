@@ -1,6 +1,8 @@
 export async function coreApi(route, method, data = null) {
+    let response;
+
     if (data !== null) {
-        await fetch(route, {
+        response = await fetch(route, {
             method: method,
             headers: {
                 "Content-Type": "application/json",
@@ -9,9 +11,9 @@ export async function coreApi(route, method, data = null) {
                     .getAttribute("content"),
             },
             body: data
-        });   
+        });
     } else {
-        await fetch(route, {
+        response = await fetch(route, {
             method: method,
             headers: {
                 "Content-Type": "application/json",
@@ -19,6 +21,8 @@ export async function coreApi(route, method, data = null) {
                     .querySelector('meta[name="csrf-token"]')
                     .getAttribute("content"),
             }
-        }); 
+        });
     }
+
+    return response; // Retornar la respuesta de la solicitud Fetch
 }

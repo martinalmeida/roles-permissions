@@ -13,9 +13,15 @@ class SesionController extends Controller
         $paswd = $request->password;
 
         if (auth()->attempt(array('email' => $email, 'password' => $paswd, 'status' => 1))) {
-            return response()->json(true);
+            return response()->json([
+                "message" => "Credenciales correctas.",
+                "status" => 200
+            ]);
         } else {
-            return response()->json(false);
+            return response()->json([
+                "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
+                "status" => 404
+            ]);
         }
     }
 

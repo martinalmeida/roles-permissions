@@ -2,18 +2,20 @@ import { coreApi } from "@/lib";
 
 export async function validated(data) {
     try {
-        const response = await coreApi("/validated", "POST", JSON.stringify(data));
+        const response = await coreApi(
+            "/validated",
+            "POST",
+            JSON.stringify(data)
+        );
 
         const result = await response.json();
 
-        return {
-            message: "Credenciales correctas.",
-            status: result.status
-        };
+        return result;
+
     } catch (error) {
         return {
-            message: "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
-            status: 400,
+            message: "Ocurrió un error interno en el servidor.",
+            status: 500 // Código 500 Internal Server Error
         };
     }
 };
