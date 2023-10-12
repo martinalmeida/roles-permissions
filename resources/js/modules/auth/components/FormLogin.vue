@@ -1,10 +1,6 @@
 <script setup>
 import { useAuth } from "@/modules/auth/composables";
 
-import Input from "@/modules/shared/components/Input.vue";
-import Button from "@/modules/shared/components/Button.vue";
-import Modal from "@/modules/shared/components/Modal.vue";
-
 const { alert, formInputs, loginValidated, closeModal } = useAuth();
 </script>
 
