@@ -5,12 +5,9 @@ import { useState } from "./state";
 export const useGetters = defineStore("shared.getters", () => {
     const state = useState();
 
-    const getEmail = computed(() => state.email);
-
-    const getPassword = computed(() => state.password);
+    const getIsLoading = computed(() => state.isLoading);
 
     return {
-        getEmail,
-        getPassword,
+        getIsLoading,
     };
 });

@@ -4,7 +4,11 @@ import { useState } from "./state";
 export const useActions = defineStore("shared.actions", () => {
     const state = useState();
 
-    return {
+    const setIsLoading = (isLoading) => {
+        state.isLoading = isLoading;
+    }
 
+    return {
+        setIsLoading,
     };
 });

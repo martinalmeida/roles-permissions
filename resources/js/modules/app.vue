@@ -1,3 +1,10 @@
+<script setup>
+import { useShared } from "@s/composables";
+
+const { loading } = useShared();
+</script>
+
 <template>
-    <router-view/>
+    <Spinner v-show="loading"></Spinner>
+    <router-view />
 </template>
