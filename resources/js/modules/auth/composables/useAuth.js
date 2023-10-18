@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useAuthStore } from "@/modules/auth/store/auth.js";
+import { useAuthStore } from "@a/store/auth.js";
 
 export function useAuth() {
     const router = useRouter();

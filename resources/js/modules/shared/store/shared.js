@@ -4,7 +4,7 @@ import { useState } from "./state";
 import { useGetters } from "./getters";
 import { useActions } from "./actions";
 
-export const useAuthStore = defineStore("auth", () => ({
+export const useAuthStore = defineStore("shared", () => ({
     ...extractStore(useState()),
     ...extractStore(useGetters()),
     ...extractStore(useActions()),

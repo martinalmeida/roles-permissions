@@ -2,7 +2,7 @@ const route = [
     {
         path: '/',
         name: "auth-login",
-        component: () => import("@/modules/auth/views/LoginView.vue"),
+        component: () => import("@a/views/LoginView.vue"),
     },
 ];
 

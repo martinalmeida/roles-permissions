@@ -1,1 +1,1 @@
-export { useAuth } from "@/modules/auth/composables/useAuth.js";
+export { useAuth } from "@a/composables/useAuth.js";

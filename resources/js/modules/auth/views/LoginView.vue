@@ -1,6 +1,6 @@
 <script setup>
-import Content from "@/modules/shared/components/auth/Content.vue";
-import FormLogin from "@/modules/auth/components/FormLogin.vue";
+import Content from "@s/components/auth/Content.vue";
+import FormLogin from "@a/components/FormLogin.vue";
 </script>
 
 <template>

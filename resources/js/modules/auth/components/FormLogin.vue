@@ -1,5 +1,5 @@
 <script setup>
-import { useAuth } from "@/modules/auth/composables";
+import { useAuth } from "@a/composables";
 
 const { alert, formInputs, loginValidated, closeModal } = useAuth();
 </script>

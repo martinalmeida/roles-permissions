@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useState } from "./state";
-import { validated } from "@/modules/auth/services";
+import { validated } from "@a/services";
 
 export const useActions = defineStore("auth.actions", () => {
     const state = useState();
