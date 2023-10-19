@@ -31,12 +31,7 @@ const props = defineProps({
             <div class="m-6">
                 <slot></slot>
                 <p class="text-center text-sm text-gray-400">
-                    Don&#x27;t have an account yet?
-                    <a
-                        href="#!"
-                        class="font-semibold text-indigo-500 focus:text-indigo-600 focus:underline focus:outline-none"
-                        >Register</a
-                    >.
+                    &copy; {{ new Date().getFullYear() }}
                 </p>
             </div>
         </div>

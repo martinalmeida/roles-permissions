@@ -13,22 +13,8 @@
                 class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"
                 >Users</a
             >
-            <a
-                href="#"
-                class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"
-                >Expense Centres</a
-            >
-            <a
-                href="#"
-                class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center"
-                >Currency Exchange</a
-            >
         </div>
         <div class="ml-auto flex items-center space-x-7">
-            <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">
-                Deposit
-            </button>
-
             <button class="flex items-center">
                 <span class="relative flex-shrink-0">
                     <img
