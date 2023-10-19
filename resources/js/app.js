@@ -11,10 +11,7 @@ import Spinner from "@s/components/Spinner.vue";
 import Input from "@s/components/Input.vue";
 import Button from "@s/components/Button.vue";
 import Alert from "@s/components/Alert.vue";
-import Sidebar from "@s/components/layout/sidebar.vue";
-import Head from "@s/components/layout/Head.vue";
-import Search from "@s/components/layout/Search.vue";
-import Content from "@s/components/layout/Content.vue";
+import Layout from "@s/components/Layout.vue";
 
 createApp(app)
     .use(createPinia())
@@ -23,8 +20,5 @@ createApp(app)
     .component("Input", Input)
     .component("Button", Button)
     .component("Alert", Alert)
-    .component("Sidebar", Sidebar)
-    .component("Head", Head)
-    .component("Search", Search)
-    .component("Content", Content)
+    .component("layout", Layout)
     .mount("#app");
