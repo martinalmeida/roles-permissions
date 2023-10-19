@@ -10,7 +10,7 @@ import router from '@/router/index.js'
 import Spinner from "@s/components/Spinner.vue";
 import Input from "@s/components/Input.vue";
 import Button from "@s/components/Button.vue";
-import Modal from "@s/components/Modal.vue";
+import Alert from "@s/components/Alert.vue";
 import Sidebar from "@s/components/layout/sidebar.vue";
 import Head from "@s/components/layout/Head.vue";
 import Search from "@s/components/layout/Search.vue";
@@ -22,7 +22,7 @@ createApp(app)
     .component("Spinner", Spinner)
     .component("Input", Input)
     .component("Button", Button)
-    .component("Modal", Modal)
+    .component("Alert", Alert)
     .component("Sidebar", Sidebar)
     .component("Head", Head)
     .component("Search", Search)

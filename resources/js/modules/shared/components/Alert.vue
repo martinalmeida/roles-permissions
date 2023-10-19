@@ -4,10 +4,6 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    btn: {
-        type: String,
-        required: false,
-    },
     close: {
         type: String,
         required: false,
@@ -61,6 +57,26 @@ const props = defineProps({
                         </div>
 
                         <div
+                            v-if="props.type === 'warning'"
+                            class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10"
+                        >
+                            <svg
+                                class="h-6 w-6 text-orange-600"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                                />
+                            </svg>
+                        </div>
+
+                        <div
                             v-if="props.type === 'danger'"
                             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
                         >
@@ -101,13 +117,6 @@ const props = defineProps({
                 <div
                     class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
                 >
-                    <button
-                        v-if="props.btn"
-                        type="button"
-                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover-bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                    >
-                        {{ props.btn }}
-                    </button>
                     <button
                         v-if="props.close"
                         type="button"

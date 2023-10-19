@@ -1,7 +1,7 @@
 <script setup>
 import { useAuth } from "@a/composables";
 
-const { alert, formInputs, loginValidated, closeModal } = useAuth();
+const { formInputs, loginValidated } = useAuth();
 </script>
 
 <template>
@@ -24,13 +24,4 @@ const { alert, formInputs, loginValidated, closeModal } = useAuth();
             @click="loginValidated"
         ></Button>
     </form>
-    <Modal
-        v-if="alert"
-        title="Solicitud fallida!"
-        close="Cerrar"
-        type="danger"
-        @close-event="closeModal"
-    >
-        {{ alert }}
-    </Modal>
 </template>

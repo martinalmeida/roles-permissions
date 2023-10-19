@@ -12,14 +12,22 @@ class SesionController extends Controller
         $email = $request->email;
         $paswd = $request->password;
 
-        if (auth()->attempt(array('email' => $email, 'password' => $paswd, 'status' => 1))) {
+        if (empty($paswd) || empty($email)) {
             return response()->json([
-                "message" => "Credenciales correctas.",
+                "message" => "Por favor ingresa tu usuario y contraseña.",
+                "type" => "warning",
+                "status" => 404
+            ]);
+        } elseif (auth()->attempt(array('email' => $email, 'password' => $paswd, 'status' => 1))) {
+            return response()->json([
+                "message" => "Bienvenido al sistema de gestión roles y permisos.",
+                "type" => "success",
                 "status" => 200
             ]);
         } else {
             return response()->json([
                 "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
+                "type" => "danger",
                 "status" => 404
             ]);
         }
