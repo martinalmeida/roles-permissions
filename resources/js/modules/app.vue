@@ -11,7 +11,7 @@ const { loading, valuesAlert, closeAlert } = useShared();
         :title="valuesAlert.title"
         :close="valuesAlert.close"
         :type="valuesAlert.type"
-        @close-event="closeAlert"
+        @close-alert="closeAlert"
     >
         {{ valuesAlert.message }}
     </Alert>

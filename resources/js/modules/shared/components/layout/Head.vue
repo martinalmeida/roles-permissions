@@ -1,3 +1,14 @@
+<script setup>
+const props = defineProps({
+    name: {
+        type: String,
+        required: true,
+    },
+});
+
+const emits = defineEmits(["openModal"]);
+</script>
+
 <template>
     <div
         class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10"
@@ -15,7 +26,7 @@
             >
         </div>
         <div class="ml-auto flex items-center space-x-7">
-            <button class="flex items-center">
+            <button class="flex items-center" @click="$emit('openModal')">
                 <span class="relative flex-shrink-0">
                     <img
                         class="w-7 h-7 rounded-full"
@@ -26,7 +37,7 @@
                         class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"
                     ></span>
                 </span>
-                <span class="ml-2">James Smith</span>
+                <span class="ml-2">{{ name }}</span>
                 <svg
                     viewBox="0 0 24 24"
                     class="w-4 ml-1 flex-shrink-0"

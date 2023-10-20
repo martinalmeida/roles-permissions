@@ -12,6 +12,7 @@ import Input from "@s/components/Input.vue";
 import Button from "@s/components/Button.vue";
 import Alert from "@s/components/Alert.vue";
 import Layout from "@s/components/Layout.vue";
+import Modal from "@s/components/Modal.vue";
 
 createApp(app)
     .use(createPinia())
@@ -21,4 +22,5 @@ createApp(app)
     .component("Button", Button)
     .component("Alert", Alert)
     .component("layout", Layout)
+    .component("Modal", Modal)
     .mount("#app");

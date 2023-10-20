@@ -33,6 +33,26 @@ class SesionController extends Controller
         }
     }
 
+    public function getAllDataSesion()
+    {
+        try {
+            $data = Auth::user();
+            return response()->json([
+                "message" => "Datos de sesion.",
+                "type" => "success",
+                "data" => $data,
+                "status" => 200
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" => "Error al obtener los datos de sesion.",
+                "type" => "danger",
+                "data" => null,
+                "status" => 404
+            ]);
+        }
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

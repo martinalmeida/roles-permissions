@@ -12,7 +12,8 @@ Route::get('/', function () {
 // Routes for login and logout
 Route::controller(SesionController::class)->group(function () {
     Route::post('/validated', 'validated');
-    Route::get('/logout', 'logout');
+    Route::get('/dataSesion', 'getAllDataSesion')->middleware('auth');
+    Route::get('/logout', 'logout')->middleware('auth');
 });
 
 // Routes for vue.js app
