@@ -7,7 +7,7 @@ import ModalLogout from "./layout/ModalLogout.vue";
 
 import { useLayout } from "@s/composables";
 
-const { name, modal, openModal, closeModal } = useLayout();
+const { name, email, nit, modal, openModal, closeModal } = useLayout();
 </script>
 
 <template>
@@ -19,5 +19,11 @@ const { name, modal, openModal, closeModal } = useLayout();
             </Content>
         </Head>
     </Sidebar>
-    <ModalLogout v-show="modal" @close-modal="closeModal"></ModalLogout>
+    <ModalLogout
+        :name="name"
+        :email="email"
+        :nit="nit"
+        v-show="modal"
+        @close-modal="closeModal"
+    ></ModalLogout>
 </template>

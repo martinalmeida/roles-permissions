@@ -4,8 +4,9 @@ import { useSharedStore } from "@s/store/shared.js";
 export function useLayout() {
     const shared = useSharedStore();
 
-    const name = ref(shared.getName);
-
+    const name = ref(shared.getUser.name);
+    const email = ref(shared.getUser.email);
+    const nit = ref(shared.getUser.nit);
     const modal = ref(shared.getValuesModal.active);
 
     const openModal = () => shared.openModal();
@@ -19,7 +20,10 @@ export function useLayout() {
 
     onMounted(async () => {
         await getAllDataUser();
-        name.value = shared.getName;
+        name.value = shared.getUser.name;
+        name.value = shared.getUser.name;
+        email.value = shared.getUser.email;
+        nit.value = shared.getUser.nit;
     });
 
     watch(
@@ -29,5 +33,5 @@ export function useLayout() {
         }
     );
 
-    return { name, modal, openModal, closeModal };
+    return { name, email, nit, modal, openModal, closeModal };
 }
