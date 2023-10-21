@@ -13,10 +13,13 @@ export const useGetters = defineStore("shared.getters", () => {
 
     const getUser = computed(() => state.user);
 
+    const getModules = computed(() => state.modules);
+
     return {
         getIsLoading,
         getValuesAlert,
         getValuesModal,
         getUser,
+        getModules,
     };
 });

@@ -48,6 +48,27 @@ export const useActions = defineStore("shared.actions", () => {
         return response;
     }
 
+    const setSeletedModule = (id) => {
+        state.modules.forEach((module) => {
+            if (module.id === id) {
+                module.selected = true;
+            } else {
+                module.selected = false;
+            }
+        });
+    }
+
+    const setSeletedSubModule = (id) => {
+        const moduleSelected = state.modules.find((module) => module.selected === true);
+        moduleSelected.subModules.forEach((module) => {
+            if (module.id === id) {
+                module.selected = true;
+            } else {
+                module.selected = false;
+            }
+        });
+    }
+
     return {
         setIsLoading,
         setAlert,
@@ -55,5 +76,7 @@ export const useActions = defineStore("shared.actions", () => {
         openModal,
         closeModal,
         setUser,
+        setSeletedModule,
+        setSeletedSubModule,
     };
 });
