@@ -14,6 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('rol_id')->nullable();
             $table->unsignedBigInteger('sub_module_id')->nullable();
+            $table->smallInteger('r')->default(0);
+            $table->smallInteger('w')->default(0);
+            $table->smallInteger('u')->default(0);
+            $table->smallInteger('d')->default(0);
             $table->foreign('rol_id')
                 ->references('id')->on('roles')
                 ->onDelete('set null');
