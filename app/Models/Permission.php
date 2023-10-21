@@ -14,6 +14,10 @@ class Permission extends Model
     protected $fillable = [
         'id',
         'rol_id',
-        'sub_module_id'
+        'sub_module_id',
+        'r',
+        'w',
+        'u',
+        'd',
     ];
 }

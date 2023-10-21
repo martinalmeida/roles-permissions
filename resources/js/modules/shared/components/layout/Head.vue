@@ -4,25 +4,37 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    subModules: {
+        type: Array,
+        required: false,
+    },
 });
 
-const emits = defineEmits(["openModal"]);
+const emits = defineEmits(["openModal", "openModule"]);
 </script>
 
 <template>
     <div
         class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10"
     >
-        <div class="flex h-full text-gray-600 dark:text-gray-400">
+        <div
+            v-for="item in subModules"
+            :key="item.id"
+            class="flex h-full text-gray-600 dark:text-gray-400"
+        >
             <a
-                href="#"
-                class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"
-                >Company</a
+                v-if="item.selected"
+                :title="item.description"
+                @click="$emit('openModule', item.id)"
+                class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"
+                >{{ item.name }}</a
             >
             <a
-                href="#"
-                class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"
-                >Users</a
+                v-else
+                :title="item.description"
+                @click="$emit('openModule', item.id)"
+                class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"
+                >{{ item.name }}</a
             >
         </div>
         <div class="ml-auto flex items-center space-x-7">

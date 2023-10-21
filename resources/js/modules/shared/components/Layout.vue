@@ -7,12 +7,28 @@ import ModalLogout from "./layout/ModalLogout.vue";
 
 import { useLayout } from "@s/composables";
 
-const { name, email, nit, modal, openModal, closeModal } = useLayout();
+const {
+    name,
+    email,
+    nit,
+    modal,
+    openModal,
+    closeModal,
+    modules,
+    subModules,
+    selectedModule,
+    selectedSubModule,
+} = useLayout();
 </script>
 
 <template>
-    <Sidebar>
-        <Head :name="name" @open-modal="openModal">
+    <Sidebar :modules="modules" @open-module="selectedModule">
+        <Head
+            :name="name"
+            :subModules="subModules"
+            @open-modal="openModal"
+            @open-module="selectedSubModule"
+        >
             <Search></Search>
             <Content>
                 <slot></slot>

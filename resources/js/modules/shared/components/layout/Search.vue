@@ -6,7 +6,7 @@
             <input
                 type="text"
                 class="pl-8 h-9 bg-transparent border border-gray-300 dark:border-gray-700 dark:text-white w-full rounded-md text-sm"
-                placeholder="Buscar modulos"
+                placeholder="Busqueda de paginas"
             />
             <svg
                 viewBox="0 0 24 24"
