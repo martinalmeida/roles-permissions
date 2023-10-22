@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(ModuleSeeder::class);
         $this->call(SubModuleSeeder::class);
+        $this->call(PermissionSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
