@@ -26,6 +26,7 @@ const emits = defineEmits(["openModal", "openModule"]);
                 v-if="item.selected"
                 :title="item.description"
                 @click="$emit('openModule', item.id)"
+                :href="item.page"
                 class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"
                 >{{ item.name }}</a
             >
@@ -33,6 +34,7 @@ const emits = defineEmits(["openModal", "openModule"]);
                 v-else
                 :title="item.description"
                 @click="$emit('openModule', item.id)"
+                :href="item.page"
                 class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"
                 >{{ item.name }}</a
             >

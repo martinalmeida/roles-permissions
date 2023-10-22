@@ -30,7 +30,7 @@ class PermissionController extends Controller
                     "message" => "No hay modulos disponibles en el sistema.",
                     "type" => "warning",
                     "data" => null,
-                    "status" => 404
+                    "status" => 202
                 ]);
             }
         } catch (\Throwable $th) {

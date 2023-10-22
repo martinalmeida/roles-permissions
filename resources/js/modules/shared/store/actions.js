@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useState } from "./state";
-import { dataSesion } from "@s/services";
+import { dataSesion, getModules, getSubModules } from "@s/services";
 
 export const useActions = defineStore("shared.actions", () => {
     const state = useState();
@@ -69,6 +69,24 @@ export const useActions = defineStore("shared.actions", () => {
         });
     }
 
+    const setGetModules = async () => {
+        const modules = await getModules();
+        const subModules = await getSubModules();
+        // Organizar los módulos en un objeto temporal usando un mapa
+        const moduleMap = new Map(modules.data.map(module => [module.id, { ...module, subModules: [] }]));
+        // Asignar los submódulos a sus respectivos módulos principales
+        subModules.data.forEach(subModule => {
+            const parentModule = moduleMap.get(subModule.module_id);
+            if (parentModule) {
+                parentModule.subModules.push(subModule);
+            }
+        });
+        // Convertir el mapa de módulos de nuevo en un arreglo
+        const organizedModules = Array.from(moduleMap.values());
+        // Actualizar el estado con los módulos organizados
+        state.modules = organizedModules;
+    }
+
     return {
         setIsLoading,
         setAlert,
@@ -78,5 +96,6 @@ export const useActions = defineStore("shared.actions", () => {
         setUser,
         setSeletedModule,
         setSeletedSubModule,
+        setGetModules,
     };
 });

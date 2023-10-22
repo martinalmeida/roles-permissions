@@ -27,6 +27,8 @@ export function useLayout() {
     // Hooks de montaje
     onMounted(async () => {
         await shared.setUser();
+        await shared.setGetModules();
+        modules.value = shared.getModules;
         name.value = shared.getUser.name;
         name.value = shared.getUser.name;
         email.value = shared.getUser.email;
