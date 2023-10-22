@@ -43,7 +43,7 @@ php artisan key:generate
 Create the necessary database tables by running migrations:
 
 ```sh
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ### Start the development server:
