@@ -1,11 +1,12 @@
 <script setup>
+import LogoTipo from "@/static/logotipo.vue";
 const props = defineProps({
     modules: {
         type: Array,
         required: true,
     },
 });
-const emits = defineEmits(["openModule"]);
+const emits = defineEmits(["openModule", "openSearch"]);
 </script>
 
 <template>
@@ -19,14 +20,10 @@ const emits = defineEmits(["openModule"]);
                 class="flex mx-auto flex-grow mt-4 flex-col text-gray-400 space-y-4"
             >
                 <div class="h-10 w-12 flex items-center justify-center">
-                    <img
-                        src="../../../../static/logo.png"
-                        alt="TransTrackMaster"
-                        width="70%"
-                        height="70%"
-                    />
+                    <LogoTipo />
                 </div>
                 <button
+                    @click="emits('openSearch', true)"
                     class="h-10 w-12 dark:text-gray-500 rounded-md flex items-center justify-center"
                 >
                     <svg

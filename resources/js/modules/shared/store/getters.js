@@ -15,11 +15,14 @@ export const useGetters = defineStore("shared.getters", () => {
 
     const getModules = computed(() => state.modules);
 
+    const getSearchModule = computed(() => state.searchModule);
+
     return {
         getIsLoading,
         getValuesAlert,
         getValuesModal,
         getUser,
         getModules,
+        getSearchModule,
     };
 });

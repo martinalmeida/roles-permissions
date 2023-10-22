@@ -11,6 +11,7 @@ export function useLayout() {
     const modal = ref(shared.getValuesModal.active);
     const modules = ref(shared.getModules);
     const subModules = ref([]);
+    const selectedSearch = ref(shared.getSearchModule);
 
     const openModal = () => shared.openModal();
 
@@ -24,8 +25,11 @@ export function useLayout() {
 
     const selectedSubModule = (id) => shared.setSeletedSubModule(id);
 
+    const setSelectedSearch = (bool) => shared.setSearchModule(bool);
+
     // Hooks de montaje
     onMounted(async () => {
+        shared.setIsLoading(true);
         await shared.setUser();
         await shared.setGetModules();
         modules.value = shared.getModules;
@@ -33,6 +37,7 @@ export function useLayout() {
         name.value = shared.getUser.name;
         email.value = shared.getUser.email;
         nit.value = shared.getUser.nit;
+        shared.setIsLoading(false);
     });
 
     // Hooks de cambio
@@ -43,5 +48,25 @@ export function useLayout() {
         }
     );
 
-    return { name, email, nit, modal, openModal, closeModal, modules, subModules, selectedModule, selectedSubModule };
+    watch(
+        () => shared.getSearchModule,
+        (newVal) => {
+            selectedSearch.value = newVal;
+        }
+    );
+
+    return {
+        name,
+        email,
+        nit,
+        modal,
+        openModal,
+        closeModal,
+        modules,
+        subModules,
+        selectedModule,
+        selectedSubModule,
+        selectedSearch,
+        setSelectedSearch,
+    };
 }

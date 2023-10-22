@@ -15,19 +15,39 @@ class SubModuleSeeder extends Seeder
     public function run()
     {
         SubModule::create([
-            'name' => 'Submódulo A',
-            'page' => 'Página A',
-            'description' => 'Descripción del submódulo A',
+            'name' => 'Inicio',
+            'page' => '/inicio',
+            'description' => 'pagina de inicio',
             'status' => 1,
-            'module_id' => 1, // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
+            'module_id' => 1,
+            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
 
         SubModule::create([
-            'name' => 'Submódulo B',
-            'page' => 'Página B',
-            'description' => 'Descripción del submódulo B',
+            'name' => 'Usuario',
+            'page' => '/usuario',
+            'description' => 'pagina de los usuarios del sistema',
             'status' => 1,
-            'module_id' => 2, // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
+            'module_id' => 2,
+            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
+        ]);
+
+        SubModule::create([
+            'name' => 'Roles',
+            'page' => '/roles',
+            'description' => 'roles del sistema',
+            'status' => 1,
+            'module_id' => 2,
+            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
+        ]);
+
+        SubModule::create([
+            'name' => 'Permisos',
+            'page' => '/permisos',
+            'description' => 'permisos del sistema',
+            'status' => 1,
+            'module_id' => 2,
+            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
     }
 }

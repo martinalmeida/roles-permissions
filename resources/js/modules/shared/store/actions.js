@@ -87,6 +87,10 @@ export const useActions = defineStore("shared.actions", () => {
         state.modules = organizedModules;
     }
 
+    const setSearchModule = (value) => {
+        state.searchModule = value;
+    }
+
     return {
         setIsLoading,
         setAlert,
@@ -97,5 +101,6 @@ export const useActions = defineStore("shared.actions", () => {
         setSeletedModule,
         setSeletedSubModule,
         setGetModules,
+        setSearchModule,
     };
 });

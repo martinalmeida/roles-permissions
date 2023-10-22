@@ -18,18 +18,24 @@ const {
     subModules,
     selectedModule,
     selectedSubModule,
+    selectedSearch,
+    setSelectedSearch,
 } = useLayout();
 </script>
 
 <template>
-    <Sidebar :modules="modules" @open-module="selectedModule">
+    <Sidebar
+        :modules="modules"
+        @open-module="selectedModule"
+        @open-search="setSelectedSearch"
+    >
         <Head
             :name="name"
             :subModules="subModules"
             @open-modal="openModal"
             @open-module="selectedSubModule"
         >
-            <Search></Search>
+            <Search v-if="selectedSearch"></Search>
             <Content>
                 <slot></slot>
             </Content>
