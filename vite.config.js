@@ -15,7 +15,10 @@ export default defineConfig({
         alias: {
             "@": fileURLToPath(new URL("./resources/js", import.meta.url)),
             "@a": fileURLToPath(new URL("./resources/js/modules/auth", import.meta.url)),
-            "@m": fileURLToPath(new URL("./resources/js/modules/home", import.meta.url)),
+            "@h": fileURLToPath(new URL("./resources/js/modules/home", import.meta.url)),
+            "@p": fileURLToPath(new URL("./resources/js/modules/permissions", import.meta.url)),
+            "@r": fileURLToPath(new URL("./resources/js/modules/roles", import.meta.url)),
+            "@u": fileURLToPath(new URL("./resources/js/modules/users", import.meta.url)),
             "@s": fileURLToPath(new URL("./resources/js/modules/shared", import.meta.url)),
         },
     },

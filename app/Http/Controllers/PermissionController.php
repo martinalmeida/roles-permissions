@@ -15,7 +15,7 @@ class PermissionController extends Controller
                 ->join('modules', 'modules.id', '=', 'sub_modules.module_id')
                 ->where('modules.status', '=', 1)
                 ->where('rol_id', '=', auth()->user()->rol_id)
-                ->orderBy('modules.name', 'desc')
+                ->orderBy('modules.name', 'asc')
                 ->get(['modules.id', 'modules.name', 'modules.icon', 'modules.description',]);
 
             if (count($modules) > 0) {
@@ -51,7 +51,7 @@ class PermissionController extends Controller
                 ->where('modules.status', '=', 1)
                 ->where('sub_modules.status', '=', 1)
                 ->where('rol_id', '=', auth()->user()->rol_id)
-                ->orderBy('sub_modules.name', 'desc')
+                ->orderBy('sub_modules.name', 'asc')
                 ->get(['sub_modules.id', 'sub_modules.name', 'sub_modules.page', 'sub_modules.description', 'sub_modules.module_id', 'r', 'w', 'u', 'd']);
 
             if (count($modules) > 0) {

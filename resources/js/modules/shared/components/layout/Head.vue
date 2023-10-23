@@ -22,22 +22,24 @@ const emits = defineEmits(["openModal", "openModule"]);
             :key="item.id"
             class="flex h-full text-gray-600 dark:text-gray-400"
         >
-            <a
+            <router-link
                 v-if="item.selected"
                 :title="item.description"
                 @click="$emit('openModule', item.id)"
-                :href="item.page"
+                :to="item.page"
                 class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"
-                >{{ item.name }}</a
             >
-            <a
+                {{ item.name }}
+            </router-link>
+            <router-link
                 v-else
                 :title="item.description"
                 @click="$emit('openModule', item.id)"
-                :href="item.page"
+                :to="item.page"
                 class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"
-                >{{ item.name }}</a
             >
+                {{ item.name }}
+            </router-link>
         </div>
         <div class="ml-auto flex items-center space-x-7">
             <button class="flex items-center" @click="$emit('openModal')">

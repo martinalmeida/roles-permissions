@@ -1,11 +1,13 @@
 <script setup>
-import LogoTipo from "@/static/logotipo.vue";
+import LogoTipo from "@/static/logo.svg";
+
 const props = defineProps({
     modules: {
         type: Array,
         required: true,
     },
 });
+
 const emits = defineEmits(["openModule", "openSearch"]);
 </script>
 
@@ -20,10 +22,10 @@ const emits = defineEmits(["openModule", "openSearch"]);
                 class="flex mx-auto flex-grow mt-4 flex-col text-gray-400 space-y-4"
             >
                 <div class="h-10 w-12 flex items-center justify-center">
-                    <LogoTipo />
+                    <img :src="LogoTipo" alt="Logo" />
                 </div>
                 <button
-                    @click="emits('openSearch', true)"
+                    @click="emits('openSearch')"
                     class="h-10 w-12 dark:text-gray-500 rounded-md flex items-center justify-center"
                 >
                     <svg

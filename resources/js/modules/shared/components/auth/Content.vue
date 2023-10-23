@@ -1,4 +1,6 @@
 <script setup>
+import LogoTipo from "@/static/logotipo.svg";
+
 const props = defineProps({
     title: {
         type: String,
@@ -19,6 +21,13 @@ const props = defineProps({
             class="container rounded my-auto max-w-md border-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 p-3"
         >
             <div class="my-6 text-center">
+                <img
+                    :src="LogoTipo"
+                    alt="Logotipo"
+                    class="mx-auto"
+                    width="100"
+                    height="100"
+                />
                 <h1
                     class="text-3xl font-semibold text-gray-700 dark:text-white"
                 >

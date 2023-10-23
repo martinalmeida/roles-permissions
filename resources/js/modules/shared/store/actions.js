@@ -87,8 +87,8 @@ export const useActions = defineStore("shared.actions", () => {
         state.modules = organizedModules;
     }
 
-    const setSearchModule = (value) => {
-        state.searchModule = value;
+    const setSearchModule = () => {
+        state.searchModule = !state.searchModule;
     }
 
     return {

@@ -20,16 +20,14 @@ class SubModuleSeeder extends Seeder
             'description' => 'pagina de inicio',
             'status' => 1,
             'module_id' => 1,
-            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
 
         SubModule::create([
-            'name' => 'Usuario',
-            'page' => '/usuario',
+            'name' => 'Usuarios',
+            'page' => '/usuarios',
             'description' => 'pagina de los usuarios del sistema',
             'status' => 1,
             'module_id' => 2,
-            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
 
         SubModule::create([
@@ -38,7 +36,6 @@ class SubModuleSeeder extends Seeder
             'description' => 'roles del sistema',
             'status' => 1,
             'module_id' => 2,
-            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
 
         SubModule::create([
@@ -47,7 +44,6 @@ class SubModuleSeeder extends Seeder
             'description' => 'permisos del sistema',
             'status' => 1,
             'module_id' => 2,
-            // Asegúrate de ajustar el valor según el ID correspondiente al módulo asociado
         ]);
     }
 }
