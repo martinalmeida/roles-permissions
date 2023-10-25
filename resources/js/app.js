@@ -18,6 +18,10 @@ const Layout = defineAsyncComponent(
     () => import("@s/components/Layout.vue")
 );
 
+// DataTables Components
+import Vue3EasyDataTable from 'vue3-easy-data-table';
+import 'vue3-easy-data-table/dist/style.css';
+
 createApp(app)
     .use(createPinia())
     .use(router)
@@ -27,4 +31,5 @@ createApp(app)
     .component("Alert", Alert)
     .component("layout", Layout)
     .component("Modal", Modal)
+    .component('DataTable', Vue3EasyDataTable)
     .mount("#app");
