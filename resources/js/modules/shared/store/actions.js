@@ -25,12 +25,22 @@ export const useActions = defineStore("shared.actions", () => {
         state.alert.message = "";
     }
 
-    const openModal = () => {
-        state.modal.active = true;
+    const openModal = (logout = true) => {
+        if (logout) {
+            state.modalLogout.active = true;
+        }
+        if (!logout) {
+            state.modal.active = true;
+        }
     }
 
-    const closeModal = () => {
-        state.modal.active = false;
+    const closeModal = (logout = true) => {
+        if (logout) {
+            state.modalLogout.active = false;
+        }
+        if (!logout) {
+            state.modal.active = false;
+        }
     }
 
     const setUser = async () => {
@@ -91,6 +101,10 @@ export const useActions = defineStore("shared.actions", () => {
         state.searchModule = !state.searchModule;
     }
 
+    const setDataTable = (item) => {
+        state.dataTable.item = item;
+    }
+
     return {
         setIsLoading,
         setAlert,
@@ -102,5 +116,6 @@ export const useActions = defineStore("shared.actions", () => {
         setSeletedSubModule,
         setGetModules,
         setSearchModule,
+        setDataTable,
     };
 });

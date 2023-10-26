@@ -5,12 +5,12 @@ import { useState } from "./state";
 export const useGetters = defineStore("roles.getters", () => {
     const state = useState();
 
-    const getEmail = computed(() => state.email);
+    const getRoles = computed(() => state.getRoles);
 
-    const getPassword = computed(() => state.password);
+    const getRol = computed(() => state.role);
 
     return {
-        getEmail,
-        getPassword,
+        getRoles,
+        getRol,
     };
 });

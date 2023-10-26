@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RolController;
 
 
 // Route app initialize
@@ -21,6 +22,11 @@ Route::controller(SesionController::class)->group(function () {
 Route::controller(PermissionController::class)->group(function () {
     Route::get('/getModules', 'getModules');
     Route::get('/getSubModules', 'getSubModules');
+})->middleware('auth');
+
+// Routes for roles
+Route::controller(RolController::class)->group(function () {
+    Route::get('/getRoles', 'getRoles');
 })->middleware('auth');
 
 // Routes for vue.js app

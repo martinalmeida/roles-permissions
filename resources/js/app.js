@@ -11,11 +11,13 @@ import Spinner from "@s/components/Spinner.vue";
 import Input from "@s/components/Input.vue";
 import Button from "@s/components/Button.vue";
 import Alert from "@s/components/Alert.vue";
-import Modal from "@s/components/Modal.vue";
 
 // Globals Async Components
 const Layout = defineAsyncComponent(
     () => import("@s/components/Layout.vue")
+);
+const Modal = defineAsyncComponent(
+    () => import("@s/components/Modal.vue")
 );
 
 // DataTables Components

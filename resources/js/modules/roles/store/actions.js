@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useState } from "./state";
-import { validated } from "@a/services";
+import { getRoles } from "@r/services";
 import { useSharedStore } from "@s/store/shared.js";
 
 export const useActions = defineStore("roles.actions", () => {
@@ -8,26 +8,14 @@ export const useActions = defineStore("roles.actions", () => {
 
     const shared = useSharedStore();
 
-    const setLogin = async (email, password) => {
+    const setGetRoles = async () => {
         shared.setIsLoading(true);
-        state.email = email;
-        state.password = password;
-        const response = await validated({
-            email: state.email,
-            password: state.password
-        });
+        const response = await getRoles();
+        state.getRoles = response.data;
         shared.setIsLoading(false);
-        shared.setAlert(
-            true,
-            "Inicio de sesión",
-            "cerrar",
-            response.type,
-            response.message
-        );
-        return response;
     };
 
     return {
-        setLogin,
+        setGetRoles,
     };
 });

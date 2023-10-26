@@ -11,7 +11,9 @@ class RolController extends Controller
     public function getRoles(Request $request)
     {
         try {
-            $roles = Rol::all();
+            $roles = Rol::where('status', 1)
+                ->orderBy('name', 'asc')
+                ->get(['id', 'name', 'description', 'status',]);
 
             if (count($roles) > 0) {
                 return response()->json([

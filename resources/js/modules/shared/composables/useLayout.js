@@ -8,7 +8,7 @@ export function useLayout() {
     const name = ref(shared.getUser.name);
     const email = ref(shared.getUser.email);
     const nit = ref(shared.getUser.nit);
-    const modal = ref(shared.getValuesModal.active);
+    const modal = ref(shared.getValuesModalLogout.active);
     const modules = ref(shared.getModules);
     const subModules = ref([]);
     const selectedSearch = ref(shared.getSearchModule);
@@ -42,7 +42,7 @@ export function useLayout() {
 
     // Hooks de cambio
     watch(
-        () => shared.getValuesModal.active,
+        () => shared.getValuesModalLogout.active,
         (newVal) => {
             modal.value = newVal;
         }

@@ -11,9 +11,12 @@ export const useState = defineStore("shared.state", {
                 type: "",
                 message: "",
             },
+            modalLogout: {
+                active: false,
+                close: "",
+            },
             modal: {
                 active: false,
-                title: "",
                 close: "",
             },
             user: {
@@ -52,6 +55,9 @@ export const useState = defineStore("shared.state", {
                 },
             ],
             searchModule: false,
+            dataTable: {
+                item: {},
+            },
         }
     },
 });

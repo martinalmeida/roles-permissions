@@ -1,0 +1,1 @@
+export { useTable } from "@r/composables/useTable.js";
