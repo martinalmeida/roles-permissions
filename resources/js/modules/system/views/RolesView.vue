@@ -3,7 +3,5 @@ import Table from "@r/components/Table.vue";
 </script>
 
 <template>
-    <layout>
-        <Table></Table>
-    </layout>
+    <Table></Table>
 </template>

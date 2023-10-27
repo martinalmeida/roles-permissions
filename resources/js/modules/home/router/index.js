@@ -1,7 +1,7 @@
 const route = [
     {
         path: '/inicio',
-        name: "module-home",
+        name: "home-module",
         component: () => import("@h/views/HomeView.vue"),
     },
 ];

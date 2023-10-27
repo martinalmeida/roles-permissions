@@ -1,7 +1,7 @@
 const route = [
     {
         path: '/',
-        name: "auth-login",
+        name: "auth-module",
         component: () => import("@a/views/LoginView.vue"),
     },
 ];
