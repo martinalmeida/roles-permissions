@@ -29,15 +29,25 @@ export function useLayout() {
 
     // Hooks de montaje
     onMounted(async () => {
-        shared.setIsLoading(true);
-        await shared.setUser();
-        await shared.setGetModules();
-        modules.value = shared.getModules;
-        name.value = shared.getUser.name;
-        name.value = shared.getUser.name;
-        email.value = shared.getUser.email;
-        nit.value = shared.getUser.nit;
-        shared.setIsLoading(false);
+        if (modules.value[0].id === 0) {
+            shared.setIsLoading(true);
+            await shared.setUser();
+            await shared.setGetModules();
+            modules.value = shared.getModules;
+            name.value = shared.getUser.name;
+            name.value = shared.getUser.name;
+            email.value = shared.getUser.email;
+            nit.value = shared.getUser.nit;
+            shared.setIsLoading(false);
+        } else {
+            shared.setIsLoading(true);
+            modules.value = shared.getModules;
+            name.value = shared.getUser.name;
+            name.value = shared.getUser.name;
+            email.value = shared.getUser.email;
+            nit.value = shared.getUser.nit;
+            shared.setIsLoading(false);
+        }
     });
 
     // Hooks de cambio

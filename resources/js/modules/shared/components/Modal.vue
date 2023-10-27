@@ -12,9 +12,12 @@ const emits = defineEmits(["closeModal"]);
     <div class="fixed inset-0 flex items-center justify-center z-50">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-30"></div>
         <div
-            class="relative z-10 p-6 w-96 rounded-lg shadow-lg bg-white text-black"
+            class="relative z-10 p-6 w-2/2 rounded-lg shadow-lg bg-white text-black"
         >
-            <h2 v-if="title" class="text-xl font-semibold mb-4 text-center">
+            <h2
+                v-if="title"
+                class="text-xl font-semibold mb-4 text-center text-blue-950"
+            >
                 {{ title }}
             </h2>
             <slot></slot>

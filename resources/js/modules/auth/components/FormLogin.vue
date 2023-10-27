@@ -20,8 +20,8 @@ const { formInputs, loginValidated } = useAuth();
         ></Input>
         <Button
             name="Iniciar Sesión"
-            type="button"
-            @click="loginValidated"
+            type="login"
+            @action-button="loginValidated"
         ></Button>
     </form>
 </template>

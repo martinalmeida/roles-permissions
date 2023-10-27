@@ -22,7 +22,7 @@ const emits = defineEmits(["closeModal"]);
         <div
             class="relative z-10 p-6 w-96 rounded-lg shadow-lg bg-white text-black"
         >
-            <h2 class="text-xl font-semibold mb-4 text-center">
+            <h2 class="text-xl font-bold mb-4 text-center text-blue-950">
                 Cerrar Sesión
             </h2>
             <div class="flex items-center justify-center mb-4">
@@ -40,7 +40,7 @@ const emits = defineEmits(["closeModal"]);
             </div>
             <div class="flex justify-center">
                 <a
-                    class="px-4 py-2 rounded-md bg-indigo-500 text-white hover:bg-indigo-600 flex"
+                    class="px-4 py-2 rounded-md bg-blue-900 text-white hover:bg-blue-950 flex"
                     href="/logout"
                 >
                     <div class="mr-1">Cerrar Sesión</div>

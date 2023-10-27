@@ -28,9 +28,7 @@ const props = defineProps({
                     width="100"
                     height="100"
                 />
-                <h1
-                    class="text-3xl font-semibold text-gray-700 dark:text-white"
-                >
+                <h1 class="text-3xl font-bold text-blue-950 dark:text-white">
                     {{ props.title }}
                 </h1>
                 <p class="text-gray-500 dark:text-gray-400">
