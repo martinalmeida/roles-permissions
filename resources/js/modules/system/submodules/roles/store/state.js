@@ -16,7 +16,10 @@ export const useState = defineStore("roles.state", {
                 name: "",
                 description: "",
                 status: "",
-            }
+            },
+            id: 0,
+            name: "",
+            description: "",
         }
     },
 });

@@ -14,6 +14,7 @@ export async function dataSesion() {
     } catch (error) {
         return {
             message: "Ocurrió un error interno en el servidor.",
+            type: "danger",
             status: 500 // Código 500 Internal Server Error
         };
     }

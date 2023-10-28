@@ -15,14 +15,14 @@ class RoleSeeder extends Seeder
     public function run()
     {
         Rol::create([
-            'name' => 'Admin',
-            'description' => 'Rol para administradores',
+            'name' => 'Administrador',
+            'description' => 'Rol para administradores del sistema',
             'status' => 1,
         ]);
 
         Rol::create([
             'name' => 'Usuario',
-            'description' => 'Rol para usuarios normales',
+            'description' => 'Rol para usuarios del sistema',
             'status' => 1,
         ]);
     }

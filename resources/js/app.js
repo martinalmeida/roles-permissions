@@ -11,6 +11,7 @@ import Spinner from "@s/components/Spinner.vue";
 import Input from "@s/components/Input.vue";
 import Button from "@s/components/Button.vue";
 import Alert from "@s/components/Alert.vue";
+import FormHead from "@s/components/FormHead.vue";
 
 // Globals Async Components
 const Layout = defineAsyncComponent(
@@ -31,6 +32,7 @@ createApp(app)
     .component("Input", Input)
     .component("Button", Button)
     .component("Alert", Alert)
+    .component("FormHead", FormHead)
     .component("layout", Layout)
     .component("Modal", Modal)
     .component('DataTable', Vue3EasyDataTable)

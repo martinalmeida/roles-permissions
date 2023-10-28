@@ -1,4 +1,5 @@
 import { defineAsyncComponent, ref, onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 import { useRoleStore } from "@r/store/roles.js";
 
@@ -7,6 +8,7 @@ export function useTable() {
         () => import("@s/components/DataTable.vue")
     );
 
+    const router = useRouter();
     const shared = useSharedStore();
     const roles = useRoleStore();
 
@@ -15,6 +17,8 @@ export function useTable() {
     const item = ref({});
 
     const closeModal = () => shared.closeModal(false);
+
+    const createRol = () => router.push({ name: "roles-create" });
 
     const headers = [
         { text: "ID", value: "id", width: 200, sortable: true },
@@ -45,5 +49,5 @@ export function useTable() {
     );
 
     // Devolver las referencias reactivas como resultado del composable
-    return { DataTable, modal, closeModal, headers, items, item };
+    return { DataTable, modal, closeModal, createRol, headers, items, item };
 }

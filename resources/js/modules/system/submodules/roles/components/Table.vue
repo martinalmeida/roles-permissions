@@ -1,7 +1,8 @@
 <script setup>
 import { useTable } from "@r/composables";
 
-const { DataTable, modal, closeModal, headers, items, item } = useTable();
+const { DataTable, modal, closeModal, createRol, headers, items, item } =
+    useTable();
 </script>
 
 <template>
@@ -11,6 +12,7 @@ const { DataTable, modal, closeModal, headers, items, item } = useTable();
         :headers="headers"
         :items="items"
         search="name"
+        @add-register="createRol"
     ></DataTable>
     <Modal v-if="modal" title="Que deseas hacer?" @close-modal="closeModal">
         <div class="w-96 mb-4 p-4 border border-gray-300 rounded-xl">

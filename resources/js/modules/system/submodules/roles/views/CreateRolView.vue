@@ -1,3 +1,7 @@
+<script setup>
+import Form from "@r/components/Form.vue";
+</script>
+
 <template>
-    <layout>create view</layout>
+    <Form></Form>
 </template>

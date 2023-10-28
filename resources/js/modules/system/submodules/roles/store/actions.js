@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useState } from "./state";
-import { getRoles } from "@r/services";
+import { getRoles, createRole } from "@r/services";
 import { useSharedStore } from "@s/store/shared.js";
 
 export const useActions = defineStore("roles.actions", () => {
@@ -15,7 +15,27 @@ export const useActions = defineStore("roles.actions", () => {
         shared.setIsLoading(false);
     };
 
+    const setCreateRol = async (name, description) => {
+        shared.setIsLoading(true);
+        state.name = name;
+        state.description = description;
+        const response = await createRole({
+            name: state.name,
+            description: state.description
+        });
+        shared.setIsLoading(false);
+        shared.setAlert(
+            true,
+            "Aletar de rol",
+            "cerrar",
+            response.type,
+            response.message
+        );
+        return response;
+    };
+
     return {
         setGetRoles,
+        setCreateRol,
     };
 });

@@ -12,7 +12,7 @@ class RolController extends Controller
     {
         try {
             $roles = Rol::where('status', 1)
-                ->orderBy('name', 'asc')
+                ->orderBy('id', 'asc')
                 ->get(['id', 'name', 'description', 'status',]);
 
             if (count($roles) > 0) {
@@ -34,6 +34,33 @@ class RolController extends Controller
             return response()->json([
                 "message" => "Error al obtener los roles.",
                 "type" => "danger",
+                "data" => null,
+                "status" => 404
+            ]);
+        }
+    }
+
+    public function create(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+            ]);
+            Rol::create([
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+            return response()->json([
+                "message" => "El rol fue creado exitosamente!",
+                "type" => "success",
+                "data" => null,
+                "status" => 200
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" => "Revisa los datos ingresados y vuelve a intentar de nuevo.",
+                "type" => "warning",
                 "data" => null,
                 "status" => 404
             ]);

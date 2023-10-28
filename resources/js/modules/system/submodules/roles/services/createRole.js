@@ -1,10 +1,11 @@
 import { coreApi } from "@/lib";
 
-export async function getSubModules() {
+export async function createRole(data) {
     try {
         const response = await coreApi(
-            "/getSubModules",
-            "GET",
+            "/createRole",
+            "POST",
+            JSON.stringify(data)
         );
 
         const result = await response.json();

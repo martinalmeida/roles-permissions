@@ -1,3 +1,1 @@
-<template>
-    <layout>Edit view</layout>
-</template>
+<template>Edit view</template>

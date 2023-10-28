@@ -27,6 +27,7 @@ Route::controller(PermissionController::class)->group(function () {
 // Routes for roles
 Route::controller(RolController::class)->group(function () {
     Route::get('/getRoles', 'getRoles');
+    Route::post('/createRole', 'create');
 })->middleware('auth');
 
 // Routes for vue.js app
