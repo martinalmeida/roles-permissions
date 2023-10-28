@@ -28,7 +28,7 @@ const emits = defineEmits(["closeModal"]);
             <div class="flex items-center justify-center mb-4">
                 <div class="w-16 h-16 rounded-full overflow-hidden">
                     <img
-                        src="https://static.mercadonegro.pe/wp-content/uploads/2022/04/01135046/imagenes-de-campanas-publicitarias.jpg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwCMklPSjWskv-h882rGhfoJ4EICgUDcmELQ&usqp=CAU"
                         alt="Imagen de perfil"
                     />
                 </div>

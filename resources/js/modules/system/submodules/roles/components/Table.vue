@@ -7,15 +7,15 @@ const { DataTable, modal, closeModal, createRol, headers, items, item } =
 
 <template>
     <DataTable
-        moduleTitle="Tabla de administración de roles"
-        addTitle="Agregar"
+        moduleTitle="Tabla de administración de roles y permisos"
+        addTitle="Agregar Rol"
         :headers="headers"
         :items="items"
         search="name"
         @add-register="createRol"
     ></DataTable>
     <Modal v-if="modal" title="Que deseas hacer?" @close-modal="closeModal">
-        <div class="w-96 mb-4 p-4 border border-gray-300 rounded-xl">
+        <div class="w-full mb-4 p-4 border border-gray-300 rounded-xl">
             <table>
                 <tbody>
                     <tr>
@@ -41,7 +41,7 @@ const { DataTable, modal, closeModal, createRol, headers, items, item } =
                 </tbody>
             </table>
             <div class="flex">
-                <div class="w-1/3 p-1">
+                <div class="w-1/2 p-1">
                     <Button
                         name="Editar"
                         type="edit"
@@ -52,6 +52,13 @@ const { DataTable, modal, closeModal, createRol, headers, items, item } =
                     <Button
                         name="Estado"
                         type="state"
+                        @action-button=""
+                    ></Button>
+                </div>
+                <div class="w-1/3 p-1">
+                    <Button
+                        name="Permisos"
+                        type="permissions"
                         @action-button=""
                     ></Button>
                 </div>

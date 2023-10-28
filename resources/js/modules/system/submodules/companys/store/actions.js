@@ -3,7 +3,7 @@ import { useState } from "./state";
 import { validated } from "@a/services";
 import { useSharedStore } from "@s/store/shared.js";
 
-export const useActions = defineStore("permissions.actions", () => {
+export const useActions = defineStore("companys.actions", () => {
     const state = useState();
 
     const shared = useSharedStore();

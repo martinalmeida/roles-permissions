@@ -4,7 +4,7 @@ import { useState } from "./state";
 import { useGetters } from "./getters";
 import { useActions } from "./actions";
 
-export const usePermissionStore = defineStore("permissions", () => ({
+export const usePermissionStore = defineStore("companys", () => ({
     ...extractStore(useState()),
     ...extractStore(useGetters()),
     ...extractStore(useActions()),

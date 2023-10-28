@@ -17,7 +17,7 @@ export default defineConfig({
             "@a": fileURLToPath(new URL("./resources/js/modules/auth", import.meta.url)),
             "@h": fileURLToPath(new URL("./resources/js/modules/home", import.meta.url)),
             "@sy": fileURLToPath(new URL("./resources/js/modules/system", import.meta.url)),
-            "@p": fileURLToPath(new URL("./resources/js/modules/system/submodules/permissions", import.meta.url)),
+            "@c": fileURLToPath(new URL("./resources/js/modules/system/submodules/companys", import.meta.url)),
             "@r": fileURLToPath(new URL("./resources/js/modules/system/submodules/roles", import.meta.url)),
             "@u": fileURLToPath(new URL("./resources/js/modules/system/submodules/users", import.meta.url)),
             "@s": fileURLToPath(new URL("./resources/js/modules/shared", import.meta.url)),

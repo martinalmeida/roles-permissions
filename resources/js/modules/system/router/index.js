@@ -1,19 +1,19 @@
-import permissionsRoutes from '@p/router/';
+import companys from '@c/router/';
 import rolesRoutes from '@r/router/';
 import usersRoutes from '@u/router/';
 
 const route = [
     {
-        path: '/permisos',
-        name: "permissions-submodule",
+        path: '/empresas',
+        name: "companys-submodule",
         component: () => import("@sy/layout/systemLayout.vue"),
         children: [
             {
                 path: '',
-                name: "permissions-index",
-                component: () => import("@sy/views/PermissionsView.vue"),
+                name: "companys-index",
+                component: () => import("@sy/views/CompanysView.vue"),
             },
-            ...permissionsRoutes
+            ...companys
         ]
     },
     {

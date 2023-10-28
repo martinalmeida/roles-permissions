@@ -46,7 +46,7 @@ const emits = defineEmits(["openModal", "openModule"]);
                 <span class="relative flex-shrink-0">
                     <img
                         class="w-7 h-7 rounded-full"
-                        src="https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwCMklPSjWskv-h882rGhfoJ4EICgUDcmELQ&usqp=CAU"
                         alt="profile"
                     />
                     <span

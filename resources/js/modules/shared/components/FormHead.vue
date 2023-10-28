@@ -16,7 +16,7 @@ const props = defineProps({
         <div
             class="mx-8 mt-8 bg-white border border-gray-200 rounded-xl sm:p-8 dark:bg-gray-800 dark:border-gray-700"
         >
-            <div class="flex items-center">
+            <div class="flex items-center px-8">
                 <h5
                     class="mb-2 text-2xl font-bold text-blue-950 dark:text-white flex-grow"
                 >
