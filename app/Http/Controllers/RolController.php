@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Rol;
-
+use App\Models\SubModule;
 
 class RolController extends Controller
 {
@@ -47,10 +48,17 @@ class RolController extends Controller
                 'name' => 'required',
                 'description' => 'required',
             ]);
-            Rol::create([
+            $newrol = Rol::create([
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
+            $submodules = SubModule::get('id');
+            foreach ($submodules as $submodule) {
+                Permission::create([
+                    'sub_module_id' => $submodule->id,
+                    'rol_id' => $newrol->id,
+                ]);
+            }
             return response()->json([
                 "message" => "El rol fue creado exitosamente!",
                 "type" => "success",
@@ -66,5 +74,4 @@ class RolController extends Controller
             ]);
         }
     }
-
 }

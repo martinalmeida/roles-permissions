@@ -31,7 +31,7 @@ class SubModuleSeeder extends Seeder
         ]);
 
         SubModule::create([
-            'name' => 'Roles y permisos',
+            'name' => 'Roles y Permisos',
             'page' => '/roles',
             'description' => 'pagina de roles y permisos del sistema',
             'status' => 1,

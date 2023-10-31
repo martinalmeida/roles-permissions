@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Rol;
+
 
 class Permission extends Model
 {
@@ -20,4 +22,9 @@ class Permission extends Model
         'u',
         'd',
     ];
+
+    public function permissionsRol()
+    {
+        return $this->belongsTo(Rol::class, 'rol_id', 'id')->select('id', 'name');
+    }
 }

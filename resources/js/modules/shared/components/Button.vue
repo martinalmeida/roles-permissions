@@ -95,7 +95,7 @@ const emits = defineEmits(["actionButton"]);
     <button
         v-if="props.type === 'permissions'"
         type="button"
-        class="w-full rounded bg-violet-900 pt-2 pb-3 text-white hover:bg-violet-950 justify-center flex"
+        class="w-full rounded bg-green-500 pt-2 pb-3 text-white hover:bg-green-600 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
