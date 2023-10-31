@@ -28,29 +28,13 @@
                 <div
                     class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full"
                 >
-                    Kathyrn Murphy
+                    Sub Modulo
                 </div>
                 <div class="flex items-center w-full">
                     <div
                         class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-blue-100 text-blue-500 rounded-md"
                     >
-                        Design
-                    </div>
-                </div>
-            </button>
-            <button
-                class="bg-white p-3 w-full flex flex-col rounded-md dark:bg-gray-800 shadow-lg relative ring-2 ring-blue-500 focus:outline-none"
-            >
-                <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full"
-                >
-                    Mert Cukuren
-                </div>
-                <div class="flex items-center w-full">
-                    <div
-                        class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-green-100 text-green-600 rounded-md"
-                    >
-                        Sales
+                        Nombre del Modulo
                     </div>
                 </div>
             </button>

@@ -10,6 +10,7 @@ const { formInputs, saveData } = useForm();
             <div class="grid grid-cols-2 gap-4 p-4">
                 <div class="p-4">
                     <Input
+                        required="true"
                         type="text"
                         label="Nombre del rol"
                         name="name"
@@ -18,6 +19,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
+                        required="true"
                         type="text"
                         label="Descripción del rol"
                         name="description"

@@ -6,22 +6,30 @@ const { formInputs, loginValidated } = useAuth();
 
 <template>
     <form class="mb-4">
-        <Input
-            type="email"
-            label="Ingresa tu correo electronico"
-            name="email"
-            v-model="formInputs.email"
-        ></Input>
-        <Input
-            type="password"
-            label="Ingresa tu contraseña"
-            name="password"
-            v-model="formInputs.password"
-        ></Input>
-        <Button
-            name="Iniciar Sesión"
-            type="login"
-            @action-button="loginValidated"
-        ></Button>
+        <div class="p-4">
+            <Input
+                required="true"
+                type="email"
+                label="Ingresa tu correo electronico"
+                name="email"
+                v-model="formInputs.email"
+            ></Input>
+        </div>
+        <div class="p-4">
+            <Input
+                required="true"
+                type="password"
+                label="Ingresa tu contraseña"
+                name="password"
+                v-model="formInputs.password"
+            ></Input>
+        </div>
+        <div class="p-4">
+            <Button
+                name="Iniciar Sesión"
+                type="login"
+                @action-button="loginValidated"
+            ></Button>
+        </div>
     </form>
 </template>

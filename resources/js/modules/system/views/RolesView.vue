@@ -3,5 +3,7 @@ import Table from "@r/components/Table.vue";
 </script>
 
 <template>
-    <Table></Table>
+    <section class="w-full max-h-full">
+        <Table></Table>
+    </section>
 </template>

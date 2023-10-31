@@ -1,5 +1,7 @@
 <template>
     <layout>
-        <router-view> </router-view>
+        <Transition name="slide-fade">
+            <router-view> </router-view>
+        </Transition>
     </layout>
 </template>

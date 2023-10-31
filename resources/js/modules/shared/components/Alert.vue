@@ -19,7 +19,7 @@ const emits = defineEmits(["closeAlert"]);
 
 <template>
     <div
-        class="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center"
+        class="fixed z-20 inset-0 overflow-y-auto flex items-center justify-center"
     >
         <div
             class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
