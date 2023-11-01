@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 
-class Companie extends Model
+class Company extends Model
 {
     use HasFactory;
 

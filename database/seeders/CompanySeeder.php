@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Companie;
+use App\Models\Company;
 
 class CompanySeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        Companie::create([
+        Company::create([
             'nit' => 123,
             'digito' => 12345,
             'nombre' => 'Empresa A',
@@ -32,7 +32,7 @@ class CompanySeeder extends Seeder
             'status' => 1,
         ]);
 
-        Companie::create([
+        Company::create([
             'nit' => 321,
             'digito' => 67890,
             'nombre' => 'Empresa B',

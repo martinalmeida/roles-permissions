@@ -1,5 +1,5 @@
 <script setup>
-import { useTable } from "@r/composables";
+import { useTable } from "@c/composables";
 
 const { DataTable, modal, closeModal, createRol, headers, items, item } =
     useTable();
@@ -7,8 +7,8 @@ const { DataTable, modal, closeModal, createRol, headers, items, item } =
 
 <template>
     <DataTable
-        moduleTitle="Tabla de administración de Roles y Permisos"
-        addTitle="Agregar Rol"
+        moduleTitle="Tabla de administración de Empresas"
+        addTitle="Agregar Empresa"
         :headers="headers"
         :items="items"
         search="name"

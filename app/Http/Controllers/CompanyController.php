@@ -3,29 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Rol;
-use App\Models\SubModule;
-use App\Models\Permission;
+use App\Models\Company;
 
-class RolController extends Controller
+class CompanyController extends Controller
 {
-    public function getRoles(Request $request)
+    public function getUsers(Request $request)
     {
         try {
-            $roles = Rol::where('status', 1)
+            $roles = Company::where('status', 1)
                 ->orderBy('id', 'asc')
-                ->get(['id', 'name', 'description', 'status',]);
+                ->get(['id', 'name', 'a_paterno', 'a_materno', 'telefono', 'email', 'status',]);
 
             if (count($roles) > 0) {
                 return response()->json([
-                    "message" => "Roles encontrados en el sistema.",
+                    "message" => "Usuarios encontrados en el sistema.",
                     "type" => "success",
                     "data" => $roles,
                     "status" => 200
                 ]);
             } else {
                 return response()->json([
-                    "message" => "No hay roles registrados.",
+                    "message" => "No hay usuarios registrados.",
                     "type" => "warning",
                     "data" => null,
                     "status" => 202
@@ -33,7 +31,7 @@ class RolController extends Controller
             }
         } catch (\Throwable $th) {
             return response()->json([
-                "message" => "Error al obtener los roles.",
+                "message" => "Error al obtener los usuarios.",
                 "type" => "danger",
                 "data" => null,
                 "status" => 404
@@ -48,19 +46,12 @@ class RolController extends Controller
                 'name' => 'required',
                 'description' => 'required',
             ]);
-            $newrol = Rol::create([
+            $newrol = Company::create([
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
-            $submodules = SubModule::get('id');
-            foreach ($submodules as $submodule) {
-                Permission::create([
-                    'sub_module_id' => $submodule->id,
-                    'rol_id' => $newrol->id,
-                ]);
-            }
             return response()->json([
-                "message" => "El rol fue creado exitosamente!",
+                "message" => "El usuario fue creado exitosamente!",
                 "type" => "success",
                 "data" => null,
                 "status" => 200
