@@ -18,7 +18,7 @@ export function useTable() {
 
     const closeModal = () => shared.closeModal(false);
 
-    const createCompany = () => router.push({ name: "roles-create" });
+    const createCompany = () => router.push({ name: "companys-create" });
 
     const headers = [
         { text: "NIT", value: "nit", sortable: true },
@@ -33,7 +33,7 @@ export function useTable() {
         { text: "CONTACTO", value: "contacto", sortable: true },
         { text: "EMAIL TECNICO", value: "email_tec", sortable: true },
         { text: "EMAIL LOGISTICA", value: "email_logis", sortable: true },
-        { text: "ESTADO", value: "status", sortable: true },
+        { text: "ESTADO", value: "user_status.state", sortable: true },
     ];
 
     // Hooks de montaje

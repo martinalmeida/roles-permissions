@@ -24,7 +24,7 @@ export function useTable() {
         { text: "ID", value: "id", width: 200, sortable: true },
         { text: "NOMBRE", value: "name", width: 200, sortable: true },
         { text: "DESCRIPCION", value: "description", width: 200, sortable: true },
-        { text: "ESTADO", value: "status", width: 200, sortable: true },
+        { text: "ESTADO", value: "user_status.state", width: 200, sortable: true },
     ];
 
     // Hooks de montaje

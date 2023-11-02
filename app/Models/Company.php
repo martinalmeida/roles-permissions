@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Status;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Company extends Model
@@ -31,8 +32,8 @@ class Company extends Model
         'status'
     ];
 
-    public function companiesUser()
+    public function userStatus(): BelongsTo
     {
-        return $this->hasMany(User::class, 'nit', 'nit')->select('id', 'name');
+        return $this->belongsTo(Status::class, 'status', 'id_state')->select('id_state', 'state');
     }
 }

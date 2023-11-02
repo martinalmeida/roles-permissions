@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Rol;
 use App\Models\SubModule;
 use App\Models\Permission;
@@ -13,15 +12,10 @@ class RolController extends Controller
     public function getRoles(Request $request)
     {
         try {
-            $roles = Rol::where('status', 1)
+            $roles = Rol::with('userStatus')
+                ->where('status', 1)
                 ->orWhere('status', 2)
                 ->orderBy('id', 'asc')
-                ->select([
-                    'id',
-                    'name',
-                    'description',
-                    DB::raw('CASE WHEN status = 1 THEN "Activo" ELSE "Inactivo" END as status'),
-                ])
                 ->get();
 
             return response()->json([

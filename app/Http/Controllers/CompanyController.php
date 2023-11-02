@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Company;
 
 class CompanyController extends Controller
@@ -11,24 +10,10 @@ class CompanyController extends Controller
     public function getCompanies(Request $request)
     {
         try {
-            $companies = Company::where('status', 1)
+            $companies = Company::with('userStatus')
+                ->where('status', 1)
                 ->orWhere('status', 2)
                 ->orderBy('nit', 'asc')
-                ->select([
-                    'nit',
-                    'digito',
-                    'nombre',
-                    'representante',
-                    'telefono',
-                    'direccion',
-                    'email',
-                    'pais',
-                    'ciudad',
-                    'contacto',
-                    'email_tec',
-                    'email_logis',
-                    DB::raw('CASE WHEN status = 1 THEN "Activo" ELSE "Inactivo" END as status'),
-                ])
                 ->get();
 
             return response()->json([

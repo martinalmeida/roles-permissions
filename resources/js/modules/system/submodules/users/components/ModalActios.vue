@@ -85,7 +85,7 @@ const emits = defineEmits(["closeModal"]);
                             Estado:
                         </td>
                         <td class="px-4 py-2">
-                            {{ item.user_status.state }}
+                            {{ item.status }}
                         </td>
                     </tr>
                 </tbody>

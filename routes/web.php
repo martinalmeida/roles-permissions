@@ -5,6 +5,7 @@ use App\Http\Controllers\SesionController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\UserController;
 
 
 // Route app initialize
@@ -35,6 +36,12 @@ Route::controller(CompanyController::class)->group(function () {
 Route::controller(RolController::class)->group(function () {
     Route::get('/getRoles', 'getRoles');
     Route::post('/createRole', 'create');
+})->middleware('auth');
+
+// Routes for users
+Route::controller(UserController::class)->group(function () {
+    Route::get('/getUsers', 'getUsers');
+    Route::post('/createUser', 'create');
 })->middleware('auth');
 
 // Routes for vue.js app

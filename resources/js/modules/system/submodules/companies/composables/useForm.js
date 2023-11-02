@@ -7,8 +7,18 @@ export function useForm() {
     const roles = useRoleStore();
 
     const formInputs = ref({
-        name: "",
-        description: "",
+        nit: "",
+        digito: "",
+        nombre: "",
+        representante: "",
+        telefono: "",
+        direccion: "",
+        email: "",
+        pais: "",
+        ciudad: "",
+        contacto: "",
+        email_tec: "",
+        email_logis: "",
     });
 
     const saveData = async () => {

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Rol;
+use App\Models\Status;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -33,9 +35,14 @@ class User extends Authenticatable
         'nit'
     ];
 
-    public function userRol()
+    public function userRol(): BelongsTo
     {
         return $this->belongsTo(Rol::class, 'rol_id', 'id')->select('id', 'name');
+    }
+
+    public function userStatus(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'status', 'id_state')->select('id_state', 'state');
     }
 
     /**

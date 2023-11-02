@@ -5,7 +5,7 @@ const { formInputs, saveData } = useForm();
 </script>
 
 <template>
-    <FormHead title="Crea un nuevo rol:" route="/roles">
+    <FormHead title="Crear un nuevo Rol:" route="/roles">
         <form class="mb-4">
             <div class="grid grid-cols-2 gap-4 p-4">
                 <div class="p-4">

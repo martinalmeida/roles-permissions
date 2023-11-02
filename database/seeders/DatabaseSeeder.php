@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ModuleSeeder::class);
         $this->call(SubModuleSeeder::class);
         $this->call(PermissionSeeder::class);
+        $this->call(StatusSeeder::class);
     }
 }
