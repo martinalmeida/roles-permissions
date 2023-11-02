@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Rol;
 use App\Models\SubModule;
 use App\Models\Permission;
@@ -13,24 +14,22 @@ class RolController extends Controller
     {
         try {
             $roles = Rol::where('status', 1)
+                ->orWhere('status', 2)
                 ->orderBy('id', 'asc')
-                ->get(['id', 'name', 'description', 'status',]);
+                ->select([
+                    'id',
+                    'name',
+                    'description',
+                    DB::raw('CASE WHEN status = 1 THEN "Activo" ELSE "Inactivo" END as status'),
+                ])
+                ->get();
 
-            if (count($roles) > 0) {
-                return response()->json([
-                    "message" => "Roles encontrados en el sistema.",
-                    "type" => "success",
-                    "data" => $roles,
-                    "status" => 200
-                ]);
-            } else {
-                return response()->json([
-                    "message" => "No hay roles registrados.",
-                    "type" => "warning",
-                    "data" => null,
-                    "status" => 202
-                ]);
-            }
+            return response()->json([
+                "message" => "Roles encontrados en el sistema.",
+                "type" => "success",
+                "data" => $roles,
+                "status" => 200
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 "message" => "Error al obtener los roles.",

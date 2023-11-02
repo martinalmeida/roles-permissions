@@ -1,7 +1,7 @@
 import { defineAsyncComponent, ref, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
-import { useRoleStore } from "@r/store/roles.js";
+import { useCompaniesStore } from "@c/store/companies.js";
 
 export function useTable() {
     const DataTable = defineAsyncComponent(
@@ -10,7 +10,7 @@ export function useTable() {
 
     const router = useRouter();
     const shared = useSharedStore();
-    const roles = useRoleStore();
+    const companies = useCompaniesStore();
 
     const modal = ref(shared.getValuesModal.active);
     const items = ref([]);
@@ -18,19 +18,28 @@ export function useTable() {
 
     const closeModal = () => shared.closeModal(false);
 
-    const createRol = () => router.push({ name: "roles-create" });
+    const createCompany = () => router.push({ name: "roles-create" });
 
     const headers = [
-        { text: "ID", value: "id", width: 200, sortable: true },
-        { text: "NOMBRE", value: "name", width: 200, sortable: true },
-        { text: "DESCRIPCION", value: "description", width: 200, sortable: true },
-        { text: "ESTADO", value: "status", width: 200, sortable: true },
+        { text: "NIT", value: "nit", sortable: true },
+        { text: "DIGITO", value: "digito", sortable: true },
+        { text: "NOMBRE", value: "nombre", width: 200, sortable: true },
+        { text: "REPRESENTANTE", value: "representante", width: 200, sortable: true },
+        { text: "TELEFONO", value: "telefono", sortable: true },
+        { text: "DIRECCION", value: "direccion", sortable: true },
+        { text: "EMAIL", value: "email", sortable: true },
+        { text: "PAIS", value: "pais", sortable: true },
+        { text: "CIUDAD", value: "ciudad", sortable: true },
+        { text: "CONTACTO", value: "contacto", sortable: true },
+        { text: "EMAIL TECNICO", value: "email_tec", sortable: true },
+        { text: "EMAIL LOGISTICA", value: "email_logis", sortable: true },
+        { text: "ESTADO", value: "status", sortable: true },
     ];
 
     // Hooks de montaje
     onMounted(async () => {
-        await roles.setGetRoles();
-        items.value = roles.getRoles;
+        await companies.setGetCompanies();
+        items.value = companies.getCompanies;
     });
 
     // Hooks de cambio
@@ -49,5 +58,5 @@ export function useTable() {
     );
 
     // Devolver las referencias reactivas como resultado del composable
-    return { DataTable, modal, closeModal, createRol, headers, items, item };
+    return { DataTable, modal, closeModal, createCompany, headers, items, item };
 }

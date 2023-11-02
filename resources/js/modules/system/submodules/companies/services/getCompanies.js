@@ -1,9 +1,9 @@
 import { coreApi } from "@/lib";
 
-export async function getRoles() {
+export async function getCompanies() {
     try {
         const response = await coreApi(
-            "/getRoles",
+            "/getCompanies",
             "GET",
         );
 

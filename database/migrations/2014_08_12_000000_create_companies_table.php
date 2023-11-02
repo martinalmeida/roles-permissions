@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('representante');
             $table->bigInteger('telefono');
             $table->string('direccion');
-            $table->string('correo');
+            $table->string('email')->unique();
             $table->string('pais')->default('COLOMBIA');
             $table->string('ciudad')->nullable();
             $table->bigInteger('contacto')->nullable();

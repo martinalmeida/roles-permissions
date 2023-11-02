@@ -20,7 +20,7 @@ class Company extends Model
         'representante',
         'telefono',
         'direccion',
-        'correo',
+        'email',
         'pais',
         'ciudad',
         'contacto',

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RolController;
 
 
@@ -18,10 +19,16 @@ Route::controller(SesionController::class)->group(function () {
     Route::get('/logout', 'logout')->middleware('auth');
 });
 
-// Routes for permission
+// Routes for permissions
 Route::controller(PermissionController::class)->group(function () {
     Route::get('/getModules', 'getModules');
     Route::get('/getSubModules', 'getSubModules');
+})->middleware('auth');
+
+// Routes for companies
+Route::controller(CompanyController::class)->group(function () {
+    Route::get('/getCompanies', 'getCompanies');
+    Route::post('/createCompany', 'create');
 })->middleware('auth');
 
 // Routes for roles

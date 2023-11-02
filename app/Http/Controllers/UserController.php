@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class RolController extends Controller
@@ -11,24 +12,25 @@ class RolController extends Controller
     {
         try {
             $roles = User::where('status', 1)
+                ->orWhere('status', 2)
                 ->orderBy('id', 'asc')
-                ->get(['id', 'name', 'a_paterno', 'a_materno', 'telefono', 'email', 'status',]);
+                ->select([
+                    'id',
+                    'name',
+                    'a_paterno',
+                    'a_materno',
+                    'telefono',
+                    'email',
+                    DB::raw('CASE WHEN status = 1 THEN "Activo" ELSE "Inactivo" END as status'),
+                ])
+                ->get();
 
-            if (count($roles) > 0) {
-                return response()->json([
-                    "message" => "Usuarios encontrados en el sistema.",
-                    "type" => "success",
-                    "data" => $roles,
-                    "status" => 200
-                ]);
-            } else {
-                return response()->json([
-                    "message" => "No hay usuarios registrados.",
-                    "type" => "warning",
-                    "data" => null,
-                    "status" => 202
-                ]);
-            }
+            return response()->json([
+                "message" => "Usuarios encontrados en el sistema.",
+                "type" => "success",
+                "data" => $roles,
+                "status" => 200
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 "message" => "Error al obtener los usuarios.",

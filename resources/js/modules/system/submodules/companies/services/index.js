@@ -1,2 +1,1 @@
-export * from "./getCompanys";
-export * from "./createCompani";
+export * from "./getCompanies";
