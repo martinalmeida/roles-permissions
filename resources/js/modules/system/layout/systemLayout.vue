@@ -1,7 +1,9 @@
 <template>
     <layout>
-        <Transition name="slide-fade">
-            <router-view> </router-view>
-        </Transition>
+        <router-view v-slot="{ Component }">
+            <transition name="slide-fade" mode="out-in">
+                <component :is="Component" />
+            </transition>
+        </router-view>
     </layout>
 </template>

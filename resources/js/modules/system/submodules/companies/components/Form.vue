@@ -10,7 +10,7 @@ const { formInputs, saveData } = useForm();
             <div class="grid grid-cols-2 gap-4 p-4">
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="number"
                         label="Nit de la empresa"
                         name="nit"
@@ -19,7 +19,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="number"
                         label="Digito de verificación"
                         name="digito"
@@ -28,7 +28,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="text"
                         label="Nombre de la empresa"
                         name="nombre"
@@ -37,7 +37,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="text"
                         label="Representante legal"
                         name="representante"
@@ -46,7 +46,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="number"
                         label="Teléfono de la empresa"
                         name="telefono"
@@ -55,7 +55,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="text"
                         label="Dirección de la empresa"
                         name="direccion"
@@ -64,7 +64,7 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
-                        required="true"
+                        required
                         type="email"
                         label="Correo de la empresa"
                         name="email"

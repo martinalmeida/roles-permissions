@@ -8,7 +8,7 @@ const { formInputs, loginValidated } = useAuth();
     <form class="mb-4">
         <div class="p-4">
             <Input
-                required="true"
+                required
                 type="email"
                 label="Ingresa tu correo electronico"
                 name="email"
@@ -17,7 +17,7 @@ const { formInputs, loginValidated } = useAuth();
         </div>
         <div class="p-4">
             <Input
-                required="true"
+                required
                 type="password"
                 label="Ingresa tu contraseña"
                 name="password"
