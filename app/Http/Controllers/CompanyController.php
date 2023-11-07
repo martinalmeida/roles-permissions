@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -45,8 +46,7 @@ class CompanyController extends Controller
                 'email' => 'required|max:255',
             ]);
             $image = $request->file('image');
-            $image->storeAs('public/companies', $image->hashName());
-            $nameImage = 'public/companies/' . $image->hashName();
+            $urlImage = Storage::url($image->storeAs('public/companies', $image->hashName()));
             Company::create([
                 'nit' => $request->nit,
                 'digito' => $request->digito,
@@ -60,7 +60,7 @@ class CompanyController extends Controller
                 'contacto' => $request->contacto,
                 'email_tec' => $request->email_tec,
                 'email_logis' => $request->email_logis,
-                'image' => $nameImage,
+                'image' => $urlImage,
             ]);
             return response()->json([
                 "message" => "La empresa fue creada exitosamente!",
