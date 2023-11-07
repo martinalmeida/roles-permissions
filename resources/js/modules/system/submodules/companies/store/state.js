@@ -33,6 +33,7 @@ export const useState = defineStore("companies.state", {
                 contacto: "",
                 email_tec: "",
                 email_logis: "",
+                file: {},
                 status: "",
             },
         }

@@ -21,6 +21,8 @@ export const useGetters = defineStore("shared.getters", () => {
 
     const getDataTable = computed(() => state.dataTable);
 
+    const getFile = computed(() => state.file);
+
     return {
         getIsLoading,
         getValuesAlert,
@@ -30,5 +32,6 @@ export const useGetters = defineStore("shared.getters", () => {
         getModules,
         getSearchModule,
         getDataTable,
+        getFile,
     };
 });

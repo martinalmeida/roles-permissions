@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id('nit');
-            $table->integer('digito');
+            $table->smallInteger('digito');
             $table->string('nombre');
             $table->string('representante');
             $table->bigInteger('telefono');
@@ -23,8 +23,7 @@ return new class extends Migration {
             $table->bigInteger('contacto')->nullable();
             $table->string('email_tec')->nullable();
             $table->string('email_logis')->nullable();
-            $table->string('content_type')->nullable();
-            $table->longText('base_64')->nullable();
+            $table->mediumText('image')->nullable();
             $table->smallInteger('status')->default(1);
             $table->timestamps();
         });

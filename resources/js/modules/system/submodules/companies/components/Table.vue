@@ -13,7 +13,7 @@ import ModalActios from "@c/components/ModalActios.vue";
         addTitle="Agregar Empresa"
         :headers="headers"
         :items="items"
-        search="name"
+        search="nombre"
         @add-register="createCompany"
     ></DataTable>
     <ModalActios

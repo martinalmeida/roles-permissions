@@ -25,15 +25,11 @@ class UserSeeder extends Seeder
             'direccionfiscal' => 'Dirección XYZ',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'), // Debes usar el método Hash para cifrar la contraseña
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'content_type' => 'tipo de contenido',
-            'base_64' => 'base 64',
             'status' => 1,
-            'rol_id' => 1, // Suponiendo que tienes un rol con id 1
-            'nit' => 123, // Suponiendo un nit válido
-            'created_at' => now(),
-            'updated_at' => now(),
+            'rol_id' => 1,
+            'nit' => 1234754,
         ]);
 
         User::create([
@@ -45,15 +41,11 @@ class UserSeeder extends Seeder
             'direccionfiscal' => 'Dirección XYZ',
             'email' => 'user@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'), // Debes usar el método Hash para cifrar la contraseña
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'content_type' => 'tipo de contenido',
-            'base_64' => 'base 64',
             'status' => 1,
-            'rol_id' => 1, // Suponiendo que tienes un rol con id 1
-            'nit' => 321, // Suponiendo un nit válido
-            'created_at' => now(),
-            'updated_at' => now(),
+            'rol_id' => 1,
+            'nit' => 321345,
         ]);
     }
 }

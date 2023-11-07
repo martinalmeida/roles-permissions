@@ -22,8 +22,6 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('content_type')->nullable();
-            $table->longText('base_64')->nullable();
             $table->smallInteger('status')->default(1);
             $table->unsignedBigInteger('rol_id')->nullable();
             $table->unsignedBigInteger('nit')->nullable();

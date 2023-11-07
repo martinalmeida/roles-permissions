@@ -1,10 +1,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useRoleStore } from "@r/store/roles.js";
+import { useCompaniesStore } from "@c/store/companies.js";
 
 export function useForm() {
     const router = useRouter();
-    const roles = useRoleStore();
+    const companies = useCompaniesStore();
 
     const formInputs = ref({
         nit: "",
@@ -22,9 +22,9 @@ export function useForm() {
     });
 
     const saveData = async () => {
-        const response = await roles.setCreateRol(formInputs.value.name, formInputs.value.description);
+        const response = await companies.setCreateComapany(formInputs.value);
         if (response.status === 200) {
-            router.push({ name: "roles-index" });
+            router.push({ name: "companys-index" });
         }
     };
 

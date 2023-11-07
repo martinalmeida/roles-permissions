@@ -112,10 +112,11 @@ const { formInputs, saveData } = useForm();
                     ></Input>
                 </div>
             </div>
+            <Drapzone acept="image" />
             <div class="w-full flex justify-center">
                 <div class="w-1/3">
                     <Button
-                        name="Guardar Rol"
+                        name="Guardar Empresa"
                         type="save"
                         @action-button="saveData"
                     ></Button>

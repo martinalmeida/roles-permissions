@@ -58,6 +58,7 @@ export const useState = defineStore("shared.state", {
             dataTable: {
                 item: {},
             },
+            file: {},
         }
     },
 });

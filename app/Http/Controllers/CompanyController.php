@@ -36,15 +36,34 @@ class CompanyController extends Controller
     {
         try {
             $request->validate([
-                'name' => 'required',
-                'description' => 'required',
+                'nit' => 'required|max:20',
+                'digito' => 'required|max:6',
+                'nombre' => 'required|max:255',
+                'representante' => 'required|max:255',
+                'telefono' => 'required|max:20',
+                'direccion' => 'required|max:255',
+                'email' => 'required|max:255',
             ]);
+            $image = $request->file('image');
+            $image->storeAs('public/companies', $image->hashName());
+            $nameImage = 'public/companies/' . $image->hashName();
             Company::create([
-                'name' => $request->name,
-                'description' => $request->description,
+                'nit' => $request->nit,
+                'digito' => $request->digito,
+                'nombre' => $request->nombre,
+                'representante' => $request->representante,
+                'telefono' => $request->telefono,
+                'direccion' => $request->direccion,
+                'email' => $request->email,
+                'pais' => $request->pais,
+                'ciudad' => $request->ciudad,
+                'contacto' => $request->contacto,
+                'email_tec' => $request->email_tec,
+                'email_logis' => $request->email_logis,
+                'image' => $nameImage,
             ]);
             return response()->json([
-                "message" => "El usuario fue creado exitosamente!",
+                "message" => "La empresa fue creada exitosamente!",
                 "type" => "success",
                 "data" => null,
                 "status" => 200

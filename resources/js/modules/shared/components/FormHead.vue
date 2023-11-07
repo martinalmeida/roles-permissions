@@ -30,7 +30,7 @@ const props = defineProps({
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="w-7 h-7 text-blue-950 dark:text-white"
+                            class="w-6 h-6 text-blue-950 dark:text-white"
                         >
                             <path
                                 stroke-linecap="round"

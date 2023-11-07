@@ -105,6 +105,10 @@ export const useActions = defineStore("shared.actions", () => {
         state.dataTable.item = item;
     }
 
+    const setFile = async (file) => {
+        state.file = await file;
+    }
+
     return {
         setIsLoading,
         setAlert,
@@ -117,5 +121,6 @@ export const useActions = defineStore("shared.actions", () => {
         setGetModules,
         setSearchModule,
         setDataTable,
+        setFile,
     };
 });

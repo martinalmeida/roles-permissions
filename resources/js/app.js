@@ -9,7 +9,6 @@ import router from '@/router/index.js'
 // Globals Simples Components
 import Spinner from "@s/components/Spinner.vue";
 import Input from "@s/components/Input.vue";
-import Button from "@s/components/Button.vue";
 import Alert from "@s/components/Alert.vue";
 import FormHead from "@s/components/FormHead.vue";
 
@@ -19,6 +18,12 @@ const Layout = defineAsyncComponent(
 );
 const Modal = defineAsyncComponent(
     () => import("@s/components/Modal.vue")
+);
+const Button = defineAsyncComponent(
+    () => import("@s/components/Button.vue")
+);
+const Drapzone = defineAsyncComponent(
+    () => import("@s/components/Drapzone.vue")
 );
 
 // DataTables Components
@@ -30,6 +35,7 @@ createApp(app)
     .use(router)
     .component("Spinner", Spinner)
     .component("Input", Input)
+    .component("Drapzone", Drapzone)
     .component("Button", Button)
     .component("Alert", Alert)
     .component("FormHead", FormHead)

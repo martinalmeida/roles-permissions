@@ -1,11 +1,11 @@
 import { coreApi } from "@/lib";
 
-export async function createRole(data) {
+export async function createCompany(data) {
     try {
         const response = await coreApi(
-            "/createRole",
+            "/createCompany",
             "POST",
-            JSON.stringify(data)
+            data
         );
 
         const result = await response.json();

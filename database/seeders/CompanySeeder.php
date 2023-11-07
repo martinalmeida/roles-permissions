@@ -15,8 +15,8 @@ class CompanySeeder extends Seeder
     public function run()
     {
         Company::create([
-            'nit' => 123,
-            'digito' => 12345,
+            'nit' => 1234754,
+            'digito' => 1,
             'nombre' => 'Empresa A',
             'representante' => 'Representante A',
             'telefono' => 1234567890,
@@ -27,14 +27,13 @@ class CompanySeeder extends Seeder
             'contacto' => 9876543210,
             'email_tec' => 'tecnicoA@example.com',
             'email_logis' => 'logisticaA@example.com',
-            'content_type' => 'tipo de contenido',
-            'base_64' => 'base 64',
+            'image' => null,
             'status' => 1,
         ]);
 
         Company::create([
-            'nit' => 321,
-            'digito' => 67890,
+            'nit' => 321345,
+            'digito' => 6,
             'nombre' => 'Empresa B',
             'representante' => 'Representante B',
             'telefono' => 9876543210,
@@ -45,8 +44,7 @@ class CompanySeeder extends Seeder
             'contacto' => 1234567890,
             'email_tec' => 'tecnicoB@example.com',
             'email_logis' => 'logisticaB@example.com',
-            'content_type' => 'tipo de contenido',
-            'base_64' => 'base 64',
+            'image' => null,
             'status' => 1,
         ]);
     }

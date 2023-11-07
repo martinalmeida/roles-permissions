@@ -27,8 +27,7 @@ class Company extends Model
         'contacto',
         'email_tec',
         'email_logis',
-        'content_type',
-        'base_64',
+        'image',
         'status'
     ];
 

@@ -28,8 +28,6 @@ class User extends Authenticatable
         'direccionfiscal',
         'email',
         'password',
-        'content_type',
-        'base_64',
         'status',
         'rol_id',
         'nit'
