@@ -5,7 +5,7 @@ export async function validated(data) {
         const response = await coreApi(
             "/validated",
             "POST",
-            JSON.stringify(data)
+            data
         );
 
         const result = await response.json();

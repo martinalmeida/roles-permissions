@@ -5,7 +5,7 @@ export async function createRole(data) {
         const response = await coreApi(
             "/createRole",
             "POST",
-            JSON.stringify(data)
+            data
         );
 
         const result = await response.json();

@@ -33,6 +33,7 @@ export function useTable() {
         { text: "CONTACTO", value: "contacto", sortable: true },
         { text: "EMAIL TECNICO", value: "email_tec", sortable: true },
         { text: "EMAIL LOGISTICA", value: "email_logis", sortable: true },
+        { text: "LOGO", value: "image", width: 200, sortable: true },
         { text: "ESTADO", value: "user_status.state", sortable: true },
     ];
 

@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted } from "vue";
 const props = defineProps({
     title: {
         type: String,
@@ -11,6 +12,11 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["closeModal"]);
+const urlImage = ref("");
+
+onMounted(() => {
+    urlImage.value = `http://127.0.0.1:8000${props.item.image}`;
+});
 </script>
 
 <template>
@@ -79,6 +85,14 @@ const emits = defineEmits(["closeModal"]);
                             Email logistica:
                         </td>
                         <td class="px-4 py-2">{{ item.email_logis }}</td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-2 font-semibold text-blue-950">
+                            Logo de Empresa:
+                        </td>
+                        <td class="px-4 py-2">
+                            <img :src="urlImage" />
+                        </td>
                     </tr>
                     <tr>
                         <td class="px-4 py-2 font-semibold text-blue-950">

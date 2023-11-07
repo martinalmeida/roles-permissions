@@ -17,6 +17,7 @@ export const useState = defineStore("companies.state", {
                     contacto: "",
                     email_tec: "",
                     email_logis: "",
+                    image: "",
                     status: "",
                 },
             ],
@@ -33,7 +34,7 @@ export const useState = defineStore("companies.state", {
                 contacto: "",
                 email_tec: "",
                 email_logis: "",
-                file: {},
+                image: "",
                 status: "",
             },
         }
