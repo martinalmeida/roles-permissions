@@ -1,8 +1,15 @@
 import { ref, onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 
 export function useLayout() {
+    const router = useRouter();
     const shared = useSharedStore();
+
+    if (shared.getToken === "") {
+        shared.setIsLoading(false);
+        router.push({ name: "auth-module" });
+    }
 
     // Variables reactivas
     const name = ref(shared.getUser.name);
