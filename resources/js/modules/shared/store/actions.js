@@ -101,10 +101,6 @@ export const useActions = defineStore("shared.actions", () => {
         state.searchModule = !state.searchModule;
     }
 
-    const setDataTable = (item) => {
-        state.dataTable.item = item;
-    }
-
     const setFile = async (file) => {
         state.file = await file;
     }
@@ -120,7 +116,6 @@ export const useActions = defineStore("shared.actions", () => {
         setSeletedSubModule,
         setGetModules,
         setSearchModule,
-        setDataTable,
         setFile,
     };
 });

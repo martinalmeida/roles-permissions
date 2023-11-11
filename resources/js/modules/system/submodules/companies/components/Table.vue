@@ -1,9 +1,7 @@
 <script setup>
 import { useTable } from "@c/composables";
 
-const { modal, createCompany, closeModal } = useTable();
-
-import ModalActios from "@c/components/ModalActios.vue";
+const { createCompany } = useTable();
 </script>
 
 <template>
@@ -14,10 +12,4 @@ import ModalActios from "@c/components/ModalActios.vue";
             @event-create="createCompany"
         ></DataTable>
     </article>
-    <ModalActios
-        v-if="modal"
-        title="Que deseas hacer?"
-        @close-modal="closeModal"
-        :item="item"
-    ></ModalActios>
 </template>

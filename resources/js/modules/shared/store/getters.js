@@ -19,8 +19,6 @@ export const useGetters = defineStore("shared.getters", () => {
 
     const getSearchModule = computed(() => state.searchModule);
 
-    const getDataTable = computed(() => state.dataTable);
-
     const getFile = computed(() => state.file);
 
     return {
@@ -31,7 +29,6 @@ export const useGetters = defineStore("shared.getters", () => {
         getUser,
         getModules,
         getSearchModule,
-        getDataTable,
         getFile,
     };
 });

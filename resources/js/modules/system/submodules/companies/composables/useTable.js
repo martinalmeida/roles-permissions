@@ -10,7 +10,6 @@ export function useTable() {
 
     const modal = ref(shared.getValuesModal.active);
     const items = ref([]);
-    const item = ref({});
 
     const closeModal = () => shared.closeModal(false);
 
@@ -47,13 +46,6 @@ export function useTable() {
         }
     );
 
-    watch(
-        () => shared.getDataTable.item,
-        (newVal) => {
-            item.value = newVal;
-        }
-    );
-
     // Devolver las referencias reactivas como resultado del composable
-    return { modal, closeModal, createCompany, headers, items, item };
+    return { modal, closeModal, createCompany, headers, items };
 }

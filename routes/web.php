@@ -14,11 +14,11 @@ Route::get('/', function () {
 })->name('login');
 
 // Routes for login and logout
-Route::controller(SesionController::class)->group(function () {
-    Route::post('/validated', 'validated');
-    Route::get('/dataSesion', 'getAllDataSesion')->middleware('auth');
-    Route::get('/logout', 'logout')->middleware('auth');
-});
+// Route::controller(SesionController::class)->group(function () {
+//     Route::post('/validated', 'validated');
+//     Route::get('/dataSesion', 'getAllDataSesion')->middleware('auth');
+//     Route::get('/logout', 'logout')->middleware('auth');
+// });
 
 // Routes for permissions
 Route::controller(PermissionController::class)->group(function () {

@@ -7,24 +7,35 @@ use Auth;
 
 class SesionController extends Controller
 {
-    public function validated(Request $request)
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'refresh', 'logout']]);
+    }
+
+    public function login(Request $request)
     {
         try {
             $request->validate([
                 'email' => 'required|max:255',
                 'password' => 'required|max:255',
             ]);
-            $authenticated = auth()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1]);
-            if ($authenticated) {
+            $credentials = $request->only('email', 'password');
+            $token = Auth::guard('api')->attempt($credentials);
+            $user = Auth::guard('api')->user();
+            if ($token && $user->status == 1) {
                 return response()->json([
                     "message" => "Bienvenido al sistema de gestión roles y permisos.",
                     "type" => "success",
+                    'authorisation' => [
+                        'token' => $token,
+                        'type' => 'bearer',
+                    ],
                     "status" => 200
                 ]);
             } else {
                 return response()->json([
                     "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
-                    "type" => "danger",
+                    "type" => "warning",
                     "status" => 404
                 ]);
             }
@@ -57,9 +68,31 @@ class SesionController extends Controller
         }
     }
 
+    public function refresh()
+    {
+        try {
+            $token = Auth::guard('api')->refresh();
+            return response()->json([
+                "message" => "Bienvenido al sistema de gestión roles y permisos.",
+                'type' => 'success',
+                'authorisation' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                ],
+                "status" => 200
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" => "Error al iniciar sesión.",
+                "type" => "danger",
+                "status" => 404
+            ]);
+        }
+    }
+
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('api')->logout();
         $request->session()->flush();
         return redirect('/');
     }

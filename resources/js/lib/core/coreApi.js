@@ -6,7 +6,7 @@ export async function coreApi(route, method, data = null) {
     if (data !== null) {
         const formData = objectToFormData(data);
 
-        response = await fetch(route, {
+        response = await fetch(`/api${route}`, {
             method: method,
             headers: {
                 "x-csrf-token": document

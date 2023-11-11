@@ -1,9 +1,9 @@
 import { coreApi } from "@/lib";
 
-export async function validated(data) {
+export async function login(data) {
     try {
         const response = await coreApi(
-            "/validated",
+            "/login",
             "POST",
             data
         );

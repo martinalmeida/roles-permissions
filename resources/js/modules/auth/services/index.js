@@ -1,1 +1,1 @@
-export * from "./validated";
+export * from "./login";
