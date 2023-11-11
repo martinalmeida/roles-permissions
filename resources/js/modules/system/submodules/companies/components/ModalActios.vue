@@ -15,7 +15,7 @@ const emits = defineEmits(["closeModal"]);
 const urlImage = ref("");
 
 onMounted(() => {
-    urlImage.value = `http://127.0.0.1:8000${props.item.image}`;
+    urlImage.value = props.item.image;
 });
 </script>
 
@@ -104,36 +104,6 @@ onMounted(() => {
                     </tr>
                 </tbody>
             </table>
-            <div class="flex">
-                <div class="w-1/2 p-1">
-                    <Button
-                        name="Editar"
-                        type="edit"
-                        @action-button=""
-                    ></Button>
-                </div>
-                <div class="w-1/3 p-1">
-                    <Button
-                        name="Estado"
-                        type="state"
-                        @action-button=""
-                    ></Button>
-                </div>
-                <div class="w-1/3 p-1">
-                    <Button
-                        name="Permisos"
-                        type="permissions"
-                        @action-button=""
-                    ></Button>
-                </div>
-                <div class="w-1/3 p-1">
-                    <Button
-                        name="Eliminar"
-                        type="delete"
-                        @action-button=""
-                    ></Button>
-                </div>
-            </div>
         </div>
     </Modal>
 </template>

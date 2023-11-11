@@ -1,21 +1,19 @@
 <script setup>
 import { useTable } from "@c/composables";
 
-const { DataTable, modal, closeModal, createCompany, headers, items, item } =
-    useTable();
+const { modal, createCompany, closeModal } = useTable();
 
 import ModalActios from "@c/components/ModalActios.vue";
 </script>
 
 <template>
-    <DataTable
-        moduleTitle="Tabla de Empresas"
-        addTitle="Agregar Empresa"
-        :headers="headers"
-        :items="items"
-        search="nombre"
-        @add-register="createCompany"
-    ></DataTable>
+    <article class="w-full">
+        <DataTable
+            title="Listado de Empresas"
+            create="Crear Empresa"
+            @event-create="createCompany"
+        ></DataTable>
+    </article>
     <ModalActios
         v-if="modal"
         title="Que deseas hacer?"

@@ -60,7 +60,7 @@ class CompanyController extends Controller
                 'contacto' => $request->contacto,
                 'email_tec' => $request->email_tec,
                 'email_logis' => $request->email_logis,
-                'image' => $urlImage,
+                'image' => env('APP_URL') . $urlImage,
             ]);
             return response()->json([
                 "message" => "La empresa fue creada exitosamente!",
