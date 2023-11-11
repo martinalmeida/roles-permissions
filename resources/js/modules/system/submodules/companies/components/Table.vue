@@ -7,7 +7,7 @@ import ModalActios from "@c/components/ModalActios.vue";
 </script>
 
 <template>
-    <article class="w-full">
+    <article class="w-full p-4">
         <DataTable
             title="Listado de Empresas"
             create="Crear Empresa"
