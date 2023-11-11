@@ -51,7 +51,7 @@ class SesionController extends Controller
     public function getAllDataSesion()
     {
         try {
-            $data = Auth::user();
+            $data = Auth::guard('api')->user();
             return response()->json([
                 "message" => "Datos de sesion.",
                 "type" => "success",
@@ -70,24 +70,15 @@ class SesionController extends Controller
 
     public function refresh()
     {
-        try {
-            $token = Auth::guard('api')->refresh();
-            return response()->json([
-                "message" => "Bienvenido al sistema de gestión roles y permisos.",
-                'type' => 'success',
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ],
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Error al iniciar sesión.",
-                "type" => "danger",
-                "status" => 404
-            ]);
-        }
+        return response()->json([
+            "message" => "Bienvenido al sistema de gestión roles y permisos.",
+            'type' => 'success',
+            'authorisation' => [
+                'token' => Auth::guard('api')->refresh(),
+                'type' => 'bearer',
+            ],
+            "status" => 200
+        ]);
     }
 
     public function logout(Request $request)

@@ -25,6 +25,10 @@ export const useActions = defineStore("shared.actions", () => {
         state.alert.message = "";
     }
 
+    const setToken = (token) => {
+        state.token = token;
+    }
+
     const openModal = (logout = true) => {
         if (logout) {
             state.modalLogout.active = true;
@@ -108,6 +112,7 @@ export const useActions = defineStore("shared.actions", () => {
     return {
         setIsLoading,
         setAlert,
+        setToken,
         closeAlert,
         openModal,
         closeModal,

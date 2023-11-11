@@ -11,6 +11,7 @@ export const useState = defineStore("shared.state", {
                 type: "",
                 message: "",
             },
+            token: "",
             modalLogout: {
                 active: false,
                 close: "",

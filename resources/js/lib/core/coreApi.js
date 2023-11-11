@@ -1,6 +1,8 @@
 import { objectToFormData } from "@/helpers";
+import { useSharedStore } from "@s/store/shared.js";
 
 export async function coreApi(route, method, data = null) {
+    const shared = useSharedStore();
     let response;
 
     if (data !== null) {
@@ -9,20 +11,15 @@ export async function coreApi(route, method, data = null) {
         response = await fetch(`/api${route}`, {
             method: method,
             headers: {
-                "x-csrf-token": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
+                Authorization: `Bearer ${shared.getToken}`,
             },
             body: formData
         });
     } else {
-        response = await fetch(route, {
+        response = await fetch(`/api${route}`, {
             method: method,
             headers: {
-                "Content-Type": "application/json",
-                "x-csrf-token": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
+                Authorization: `Bearer ${shared.getToken}`,
             }
         });
     }

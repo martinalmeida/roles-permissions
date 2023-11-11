@@ -8,6 +8,11 @@ use App\Models\Permission;
 
 class PermissionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function getModules(Request $request)
     {
         try {

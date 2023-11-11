@@ -9,6 +9,8 @@ export const useGetters = defineStore("shared.getters", () => {
 
     const getValuesAlert = computed(() => state.alert);
 
+    const getToken = computed(() => state.token);
+
     const getValuesModalLogout = computed(() => state.modalLogout);
 
     const getValuesModal = computed(() => state.modal);
@@ -24,6 +26,7 @@ export const useGetters = defineStore("shared.getters", () => {
     return {
         getIsLoading,
         getValuesAlert,
+        getToken,
         getValuesModalLogout,
         getValuesModal,
         getUser,
