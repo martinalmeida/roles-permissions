@@ -75,7 +75,7 @@ class CompanyController extends Controller
             ]);
         } catch (\Throwable $th) {
             return response()->json([
-                "message" => "Revisa los datos ingresados y vuelve a intentar de nuevo.",
+                "message" => $th,
                 "type" => "warning",
                 "data" => null,
                 "status" => 404
