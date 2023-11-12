@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
+import { useRouter } from "vue-router";
 import { useState } from "./state";
-import { dataSesion, getModules, getSubModules } from "@s/services";
+import { dataSesion, getModules, getSubModules, logout } from "@s/services";
 
 export const useActions = defineStore("shared.actions", () => {
+    const router = useRouter();
     const state = useState();
 
     const setIsLoading = (isLoading) => {
@@ -27,6 +29,14 @@ export const useActions = defineStore("shared.actions", () => {
 
     const setToken = (token) => {
         state.token = token;
+        localStorage.setItem("token.jwt", token);
+    }
+
+    const setLogout = async () => {
+        await logout();
+        state.token = "";
+        localStorage.clear();
+        router.push({ name: "auth-module" });
     }
 
     const openModal = (logout = true) => {
@@ -113,6 +123,7 @@ export const useActions = defineStore("shared.actions", () => {
         setIsLoading,
         setAlert,
         setToken,
+        setLogout,
         closeAlert,
         openModal,
         closeModal,

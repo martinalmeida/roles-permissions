@@ -14,6 +14,7 @@ const {
     modal,
     openModal,
     closeModal,
+    logout,
     modules,
     subModules,
     selectedModule,
@@ -46,6 +47,7 @@ const {
         :email="email"
         :nit="nit"
         v-show="modal"
+        @system-logout="logout"
         @close-modal="closeModal"
     ></ModalLogout>
 </template>

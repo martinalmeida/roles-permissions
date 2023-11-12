@@ -19,7 +19,7 @@ const Layout = defineAsyncComponent(
     () => import("@s/components/Layout.vue")
 );
 const DataTable = defineAsyncComponent(
-    () => import("@s/components/DataTable/Table.vue")
+    () => import("@s/components/DataTable.vue")
 );
 const Drapzone = defineAsyncComponent(
     () => import("@s/components/Drapzone.vue")

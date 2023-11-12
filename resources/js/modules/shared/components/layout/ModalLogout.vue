@@ -13,7 +13,7 @@ const props = defineProps({
         required: true,
     },
 });
-const emits = defineEmits(["closeModal"]);
+const emits = defineEmits(["systemLogout", "closeModal"]);
 </script>
 
 <template>
@@ -39,9 +39,9 @@ const emits = defineEmits(["closeModal"]);
                 <p>NIT: {{ props.nit }}</p>
             </div>
             <div class="flex justify-center">
-                <a
+                <button
                     class="px-4 py-2 rounded-md bg-blue-900 text-white hover:bg-blue-950 flex"
-                    href="/logout"
+                    @click="$emit('systemLogout')"
                 >
                     <div class="mr-1">Cerrar Sesión</div>
                     <div>
@@ -60,7 +60,7 @@ const emits = defineEmits(["closeModal"]);
                             />
                         </svg>
                     </div>
-                </a>
+                </button>
                 <button
                     class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     @click="$emit('closeModal')"

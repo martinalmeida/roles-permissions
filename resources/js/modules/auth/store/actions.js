@@ -16,9 +16,7 @@ export const useActions = defineStore("auth.actions", () => {
             email: state.email,
             password: state.password
         });
-        if (response.status === 200) {
-            shared.setToken(response.authorisation.token);
-        }
+        await shared.setToken(response.authorisation.token);
         shared.setIsLoading(false);
         shared.setAlert(
             true,

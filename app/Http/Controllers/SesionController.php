@@ -84,7 +84,10 @@ class SesionController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('api')->logout();
-        $request->session()->flush();
-        return redirect('/');
+        return response()->json([
+            "message" => "Sesión cerrada.",
+            "type" => "warning",
+            "status" => 200
+        ]);
     }
 }

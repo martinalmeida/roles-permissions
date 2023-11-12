@@ -1,15 +1,8 @@
 import { ref, onMounted, watch } from "vue";
-import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 
 export function useLayout() {
-    const router = useRouter();
     const shared = useSharedStore();
-
-    if (shared.getToken === "") {
-        shared.setIsLoading(false);
-        router.push({ name: "auth-module" });
-    }
 
     // Variables reactivas
     const name = ref(shared.getUser.name);
@@ -24,6 +17,13 @@ export function useLayout() {
 
     const closeModal = () => shared.closeModal();
 
+    const logout = async () => {
+        shared.setIsLoading(true);
+        shared.closeModal();
+        await shared.setLogout();
+        shared.setIsLoading(false);
+    };
+
     const selectedModule = (id) => {
         const module = modules.value.find((module) => module.id === id);
         subModules.value = module.subModules;
@@ -36,23 +36,26 @@ export function useLayout() {
 
     // Hooks de montaje
     onMounted(async () => {
+        if (shared.getToken === "") {
+            shared.setToken(localStorage.getItem("token.jwt"));
+        }
         if (modules.value[0].id === 0) {
             shared.setIsLoading(true);
             await shared.setUser();
             await shared.setGetModules();
-            modules.value = shared.getModules;
-            name.value = shared.getUser.name;
-            name.value = shared.getUser.name;
-            email.value = shared.getUser.email;
-            nit.value = shared.getUser.nit;
+            modules.value = await shared.getModules;
+            name.value = await shared.getUser.name;
+            name.value = await shared.getUser.name;
+            email.value = await shared.getUser.email;
+            nit.value = await shared.getUser.nit;
             shared.setIsLoading(false);
         } else {
             shared.setIsLoading(true);
-            modules.value = shared.getModules;
-            name.value = shared.getUser.name;
-            name.value = shared.getUser.name;
-            email.value = shared.getUser.email;
-            nit.value = shared.getUser.nit;
+            modules.value = await shared.getModules;
+            name.value = await shared.getUser.name;
+            name.value = await shared.getUser.name;
+            email.value = await shared.getUser.email;
+            nit.value = await shared.getUser.nit;
             shared.setIsLoading(false);
         }
     });
@@ -79,6 +82,7 @@ export function useLayout() {
         modal,
         openModal,
         closeModal,
+        logout,
         modules,
         subModules,
         selectedModule,
