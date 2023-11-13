@@ -3,13 +3,13 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\CreateCompanyRequest;
+use Illuminate\Http\Request;
 use App\Models\Company;
 
 class CompanyService
 {
 
-    public function uploadImage(CreateCompanyRequest $request, int $company_id):?string
+    public function uploadImage(Request $request, int $company_id):?string
     {
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -24,23 +24,22 @@ class CompanyService
     }
 
 
-    public function createCompany(array $company_data): Company
+    public function createCompany(Request $request): Company
     {
-        $company = Company::create([
 
-            'nit' => $company_data['nit'],
-            'digito' => $company_data['digito'],
-            'nombre' => $company_data['nombre'],
-            'representante' => $company_data['representante'],
-            'telefono' => $company_data['telefono'],
-            'direccion' => $company_data['direccion'],
-            'email' => $company_data['email'],
-            'pais' => $company_data['pais'],
-            'ciudad' => $company_data['ciudad'] ?? null,
-            'contacto' => $company_data['contacto'] ?? null,
-            'email_tec' => $company_data['email_tec'] ?? null,
-            'email_logis' => $company_data['email_logis'] ?? null,
-    
+        $company = Company::create([
+            'nit' => $request->nit,
+            'digito' => $request->digito,
+            'nombre' => $request->nombre,
+            'representante' => $request->representante,
+            'telefono' => $request->telefono,
+            'direccion' => $request->direccion,
+            'email' => $request->email,
+            'pais' => $request->pais,
+            'ciudad' => $request->ciudad ?? null,
+            'contacto' => $request->contacto ?? null,
+            'email_tec' => $request->email_tec ?? null,
+            'email_logis' => $request->email_logis ?? null,
         ]);
 
         return $company; 

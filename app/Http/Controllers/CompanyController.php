@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCompanyRequest;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Services\CompanyService;
@@ -42,10 +41,20 @@ class CompanyController extends Controller
         }
     }
 
-    public function create(CreateCompanyRequest $request, CompanyService $companyService)
+    public function create(Request $request, CompanyService $companyService)
     {
         try {
-            $company = $companyService->createCompany($request->validated());
+            $request->validate([
+                'nit' => 'required|max:20',
+                'digito' => 'required|max:6',
+                'nombre' => 'required|max:255',
+                'representante' => 'required|max:255',
+                'telefono' => 'required|max:20',
+                'direccion' => 'required|max:255',
+                'email' => 'required|max:255',
+                'pais' => 'required|max:255',
+            ]);
+            $company = $companyService->createCompany($request);
             $company_image =$companyService->uploadImage($request, $company->id);
             if ($company_image) {
                 return response()->json(["message" => "La empresa fue creada exitosamente!"], 200);
