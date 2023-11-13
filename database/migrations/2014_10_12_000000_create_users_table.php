@@ -24,12 +24,12 @@ return new class extends Migration {
             $table->rememberToken();
             $table->smallInteger('status')->default(1);
             $table->unsignedBigInteger('rol_id')->nullable();
-            $table->unsignedBigInteger('nit')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('rol_id')
                 ->references('id')->on('roles')
                 ->onDelete('set null');
-            $table->foreign('nit')
-                ->references('nit')->on('companies')
+            $table->foreign('company_id')
+                ->references('id')->on('companies')
                 ->onDelete('set null');
             $table->timestamps();
         });

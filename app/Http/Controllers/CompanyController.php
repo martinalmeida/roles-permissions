@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCompanyRequest;
 use Illuminate\Http\Request;
 use App\Models\Company;
-use Illuminate\Support\Facades\Storage;
+use App\Services\CompanyService;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CompanyController extends Controller
 {
+    use ValidatesRequests;
+
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -38,48 +42,20 @@ class CompanyController extends Controller
         }
     }
 
-    public function create(Request $request)
+    public function create(CreateCompanyRequest $request, CompanyService $companyService)
     {
         try {
-            $request->validate([
-                'nit' => 'required|max:20',
-                'digito' => 'required|max:6',
-                'nombre' => 'required|max:255',
-                'representante' => 'required|max:255',
-                'telefono' => 'required|max:20',
-                'direccion' => 'required|max:255',
-                'email' => 'required|max:255',
-            ]);
-            $image = $request->file('image');
-            $urlImage = Storage::url($image->storeAs('public/companies', $image->hashName()));
-            Company::create([
-                'nit' => $request->nit,
-                'digito' => $request->digito,
-                'nombre' => $request->nombre,
-                'representante' => $request->representante,
-                'telefono' => $request->telefono,
-                'direccion' => $request->direccion,
-                'email' => $request->email,
-                'pais' => $request->pais,
-                'ciudad' => $request->ciudad,
-                'contacto' => $request->contacto,
-                'email_tec' => $request->email_tec,
-                'email_logis' => $request->email_logis,
-                'image' => env('APP_URL') . $urlImage,
-            ]);
+            $company = $companyService->createCompany($request->validated());
+            $company_image =$companyService->uploadImage($request, $company->id);
+            if ($company_image) {
+                return response()->json(["message" => "La empresa fue creada exitosamente!"], 200);
+            }
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => "La empresa fue creada exitosamente!",
-                "type" => "success",
-                "data" => null,
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Revisa los datos ingresados y vuelve a intentar de nuevo.",
-                "type" => "warning",
-                "data" => null,
-                "status" => 404
+                "message" => $e->getMessage()
             ]);
         }
     }
 }
+
+

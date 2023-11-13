@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'status' => 1,
             'rol_id' => 1,
-            'nit' => 1234754,
+            'company_id' => 1,
         ]);
 
         User::create([
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'status' => 1,
             'rol_id' => 1,
-            'nit' => 321345,
+            'company_id' => 2,
         ]);
     }
 }

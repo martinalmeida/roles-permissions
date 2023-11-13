@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id('nit');
+            $table->id();
+            $table->bigInteger('nit');
             $table->smallInteger('digito');
             $table->string('nombre');
             $table->string('representante');
