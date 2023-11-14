@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SesionController extends Controller
 {
@@ -20,7 +20,7 @@ class SesionController extends Controller
                 'password' => 'required|max:255',
             ]);
             $credentials = $request->only('email', 'password');
-            $token = Auth::guard('api')->attempt($credentials);
+            $token = Auth::guard('api')->setTTL(1440)->attempt($credentials);
             $user = Auth::guard('api')->user();
             if ($token && $user->status == 1) {
                 return response()->json([

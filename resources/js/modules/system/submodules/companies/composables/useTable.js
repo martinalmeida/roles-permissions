@@ -1,4 +1,4 @@
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 import { useCompaniesStore } from "@c/store/companies.js";
@@ -8,7 +8,6 @@ export function useTable() {
     const shared = useSharedStore();
     const companies = useCompaniesStore();
 
-    const modal = ref(shared.getValuesModal.active);
     const items = ref([]);
 
     const closeModal = () => shared.closeModal(false);
@@ -38,14 +37,6 @@ export function useTable() {
         items.value = companies.getCompanies;
     });
 
-    // Hooks de cambio
-    watch(
-        () => shared.getValuesModal.active,
-        (newVal) => {
-            modal.value = newVal;
-        }
-    );
-
     // Devolver las referencias reactivas como resultado del composable
-    return { modal, closeModal, createCompany, headers, items };
+    return { closeModal, createCompany, headers, items };
 }

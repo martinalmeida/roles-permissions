@@ -17,16 +17,11 @@ export function useShared() {
     const closeAlert = () => shared.closeAlert();
 
     watch(
-        () => shared.getIsLoading,
-        (newVal) => {
-            loading.value = newVal;
-        }
-    );
-
-    watch(
-        () => shared.getValuesAlert.active,
-        (newAlert) => {
-            valuesAlert.value.active = newAlert;
+        [() => shared.getIsLoading, () => shared.getValuesAlert.active],
+        ([loadingVal, alertVal]) => {
+            // Lógica común para ambos watchers
+            loading.value = loadingVal;
+            valuesAlert.value.active = alertVal;
             valuesAlert.value.title = shared.getValuesAlert.title;
             valuesAlert.value.close = shared.getValuesAlert.close;
             valuesAlert.value.type = shared.getValuesAlert.type;

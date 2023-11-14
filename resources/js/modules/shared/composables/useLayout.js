@@ -1,13 +1,15 @@
-import { ref, onMounted, watch } from "vue";
+import { ref, onBeforeMount, onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 
 export function useLayout() {
+    const router = useRouter();
     const shared = useSharedStore();
 
     // Variables reactivas
     const name = ref(shared.getUser.name);
     const email = ref(shared.getUser.email);
-    const nit = ref(shared.getUser.nit);
+    const company_id = ref(shared.getUser.company_id);
     const modal = ref(shared.getValuesModalLogout.active);
     const modules = ref(shared.getModules);
     const subModules = ref([]);
@@ -35,10 +37,16 @@ export function useLayout() {
     const setSelectedSearch = (bool) => shared.setSearchModule(bool);
 
     // Hooks de montaje
-    onMounted(async () => {
-        if (shared.getToken === "") {
-            shared.setToken(localStorage.getItem("token.jwt"));
+    onBeforeMount(() => {
+        const token = localStorage.getItem("tokenJWT");
+        if (token === 'null') {
+            router.push({ name: "auth-module" });
+        } else if (shared.getToken === "") {
+            shared.setToken(localStorage.getItem("tokenJWT"));
         }
+    });
+
+    onMounted(async () => {
         if (modules.value[0].id === 0) {
             shared.setIsLoading(true);
             await shared.setUser();
@@ -47,7 +55,7 @@ export function useLayout() {
             name.value = await shared.getUser.name;
             name.value = await shared.getUser.name;
             email.value = await shared.getUser.email;
-            nit.value = await shared.getUser.nit;
+            company_id.value = await shared.getUser.company_id;
             shared.setIsLoading(false);
         } else {
             shared.setIsLoading(true);
@@ -55,30 +63,25 @@ export function useLayout() {
             name.value = await shared.getUser.name;
             name.value = await shared.getUser.name;
             email.value = await shared.getUser.email;
-            nit.value = await shared.getUser.nit;
+            company_id.value = await shared.getUser.company_id;
             shared.setIsLoading(false);
         }
     });
 
     // Hooks de cambio
     watch(
-        () => shared.getValuesModalLogout.active,
-        (newVal) => {
-            modal.value = newVal;
-        }
-    );
-
-    watch(
-        () => shared.getSearchModule,
-        (newVal) => {
-            selectedSearch.value = newVal;
+        [() => shared.getValuesModalLogout.active, () => shared.getSearchModule],
+        ([modalVal, searchVal]) => {
+            // Lógica común para ambos watchers
+            modal.value = modalVal;
+            selectedSearch.value = searchVal;
         }
     );
 
     return {
         name,
         email,
-        nit,
+        company_id,
         modal,
         openModal,
         closeModal,

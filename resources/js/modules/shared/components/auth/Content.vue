@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex min-h-screen justify-center bg-gray-100 dark:bg-gray-900 dark:text-white font-sans"
+        class="flex min-h-screen justify-center bg-gray-100 dark:bg-gray-900 dark:text-white font-sans p-6"
     >
         <div
             class="container rounded my-auto max-w-md border-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 p-3"
