@@ -17,29 +17,14 @@ class CompanyController extends Controller
         $this->middleware('auth:api');
     }
      
-    public function getCompanies(Request $request)
+    public function show(Request $request, CompanyService $companyService)
     {
-        try {
-            $companies = Company::with('userStatus')
-                ->where('status', 1)
-                ->orWhere('status', 2)
-                ->orderBy('nit', 'asc')
-                ->get();
-
-            return response()->json([
-                "message" => "Listado de empresas.",
-                "type" => "success",
-                "data" => $companies,
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Error al obtener la lista de empresas.",
-                "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
-        }
+        $companies = $companyService->showCompanies();
+        if ($companies){
+            return response()->json(["message" => $companies,], 200);
+        } else {
+            return response()->json(["message" => "Error al obtener la lista de empresas."], 400);
+        } 
     }
 
     public function create(CreateCompanyRequest $request, CompanyService $companyService)

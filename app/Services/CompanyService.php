@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Http\Requests\CreateCompanyRequest;
 
@@ -45,5 +44,19 @@ class CompanyService
         ]);
 
         return $company; 
-    }       
+    }
+
+    public function showCompanies(): array
+    {
+        $companies = Company::with('userStatus')
+            ->where('status', 1)
+            ->orWhere('status', 2)
+            ->orderBy('nit', 'asc')
+            ->get()
+            ->toArray();
+
+        return $companies;
+    }
+    
+    
 }

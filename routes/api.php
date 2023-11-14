@@ -39,7 +39,7 @@ Route::controller(PermissionController::class)->group(function () {
 
 // Routes for companies
 Route::controller(CompanyController::class)->group(function () {
-    Route::get('/getCompanies', 'getCompanies');
+    Route::get('/showCompany', 'show');
     Route::post('/createCompany', 'create');
 });
 

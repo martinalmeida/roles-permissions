@@ -38,16 +38,14 @@ class CreateCompanyRequest extends FormRequest
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'success'   => false,
-            'message'   => 'Validation errors',
-            'data'      => $validator->errors()
-        ]));
+            'message'   => $validator->errors()
+        ], 400));
     }
 
     public function messages()
     {
         return [
-            'email.unique' => 'Esta dirección de correo electrónico ya se encuentra registrada.',
+            'email.unique' => 'La dirección de correo electrónico ya se encuentra registrada.',
         ];
     }
 }
