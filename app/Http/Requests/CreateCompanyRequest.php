@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class CreateCompanyRequest extends FormRequest
 {
@@ -28,8 +30,24 @@ class CreateCompanyRequest extends FormRequest
             'representante' => 'required|max:255',
             'telefono' => 'required|max:20',
             'direccion' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|max:255|unique:companies,email',
             'pais' => 'required|max:255',
+        ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   => 'Validation errors',
+            'data'      => $validator->errors()
+        ]));
+    }
+
+    public function messages()
+    {
+        return [
+            'email.unique' => 'Esta dirección de correo electrónico ya se encuentra registrada.',
         ];
     }
 }

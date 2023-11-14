@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Services\CompanyService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Http\Requests\CreateCompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -15,7 +16,7 @@ class CompanyController extends Controller
     {
         $this->middleware('auth:api');
     }
-
+     
     public function getCompanies(Request $request)
     {
         try {
@@ -41,28 +42,14 @@ class CompanyController extends Controller
         }
     }
 
-    public function create(Request $request, CompanyService $companyService)
-    {
-        try {
-            $request->validate([
-                'nit' => 'required|max:20',
-                'digito' => 'required|max:6',
-                'nombre' => 'required|max:255',
-                'representante' => 'required|max:255',
-                'telefono' => 'required|max:20',
-                'direccion' => 'required|max:255',
-                'email' => 'required|max:255',
-                'pais' => 'required|max:255',
-            ]);
-            $company = $companyService->createCompany($request);
-            $company_image =$companyService->uploadImage($request, $company->id);
-            if ($company_image) {
-                return response()->json(["message" => "La empresa fue creada exitosamente!"], 200);
-            }
-        } catch (\Exception $e) {
-            return response()->json([
-                "message" => $e->getMessage()
-            ]);
+    public function create(CreateCompanyRequest $request, CompanyService $companyService)
+    {  
+        $company = $companyService->createCompany($request->validated());
+        $company_image =$companyService->uploadImage($request, $company->id);
+        if ($company_image) {
+            return response()->json(["message" => "La empresa fue creada exitosamente!"], 200);
+        } else {
+            return response()->json(["message" => "Error al crear la empresa."], 400);
         }
     }
 }
