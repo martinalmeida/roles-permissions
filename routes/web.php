@@ -11,4 +11,4 @@ Route::get('/', function () {
 // Routes for vue.js app
 Route::get('/{pathMatch}', function () {
     return view('app');
-})->where('pathMatch', ".*")->middleware('auth:api');
+})->where('pathMatch', ".*");

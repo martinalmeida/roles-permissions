@@ -30,7 +30,7 @@ export const useState = defineStore("shared.state", {
                 email: "",
                 status: "",
                 rolId: 0,
-                nit: 0,
+                company_id: 0,
             },
             modules: [
                 {

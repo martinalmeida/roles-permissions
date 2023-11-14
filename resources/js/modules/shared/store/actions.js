@@ -29,13 +29,13 @@ export const useActions = defineStore("shared.actions", () => {
 
     const setToken = (token) => {
         state.token = token;
-        localStorage.setItem("token.jwt", token);
+        localStorage.setItem("tokenJWT", token);
     }
 
     const setLogout = async () => {
         await logout();
         state.token = "";
-        localStorage.clear();
+        localStorage.setItem("tokenJWT", null);
         router.push({ name: "auth-module" });
     }
 
@@ -68,7 +68,7 @@ export const useActions = defineStore("shared.actions", () => {
         state.user.email = response.data.email;
         state.user.status = response.data.status;
         state.user.rolId = response.data.rol_id;
-        state.user.nit = response.data.nit;
+        state.user.company_id = response.data.company_id;
         return response;
     }
 

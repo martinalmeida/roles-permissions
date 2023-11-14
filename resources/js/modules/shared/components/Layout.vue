@@ -10,7 +10,7 @@ import { useLayout } from "@s/composables";
 const {
     name,
     email,
-    nit,
+    company_id,
     modal,
     openModal,
     closeModal,
@@ -45,7 +45,7 @@ const {
     <ModalLogout
         :name="name"
         :email="email"
-        :nit="nit"
+        :company_id="company_id"
         v-show="modal"
         @system-logout="logout"
         @close-modal="closeModal"

@@ -1,9 +1,11 @@
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useSharedStore } from "@s/store/shared.js";
 import { useAuthStore } from "@a/store/auth.js";
 
 export function useAuth() {
     const router = useRouter();
+    const shared = useSharedStore();
     const auth = useAuthStore();
 
     const formInputs = ref({
@@ -17,6 +19,8 @@ export function useAuth() {
             router.push({ name: "home-module" });
         }
     };
+
+    onMounted(() => shared.setIsLoading(false));
 
     // Devolver las referencias reactivas como resultado del composable
     return { formInputs, loginValidated };

@@ -8,7 +8,7 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    nit: {
+    company_id: {
         type: Number,
         required: true,
     },
@@ -36,7 +36,7 @@ const emits = defineEmits(["systemLogout", "closeModal"]);
             <div class="mb-4 text-center">
                 <p>{{ props.name }}</p>
                 <p>{{ props.email }}</p>
-                <p>NIT: {{ props.nit }}</p>
+                <p>company_id: {{ props.company_id }}</p>
             </div>
             <div class="flex justify-center">
                 <button
