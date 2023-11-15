@@ -51,18 +51,15 @@ class SesionController extends Controller
         try {
             $data = Auth::guard('api')->user();
             return response()->json([
+                "success" => true,
                 "message" => "Datos de sesion.",
-                "type" => "success",
                 "data" => $data,
-                "status" => 200
-            ]);
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
+                "success" => false,
                 "message" => "Error al obtener los datos de sesion.",
-                "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
+            ], 500);
         }
     }
 
@@ -70,9 +67,8 @@ class SesionController extends Controller
     {
         Auth::guard('api')->logout();
         return response()->json([
+            "success" => false,
             "message" => "Sesión cerrada.",
-            "type" => "warning",
-            "status" => 200
-        ]);
+        ], 200);
     }
 }
