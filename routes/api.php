@@ -27,8 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(SesionController::class)->group(function () {
     Route::post('/login', 'login');
     Route::get('/dataSesion', 'getAllDataSesion');
-    Route::get('/refresh', 'refresh');
-    Route::get('/logout', 'logout');
+    Route::post('/logout', 'logout');
 });
 
 // Routes for permissions

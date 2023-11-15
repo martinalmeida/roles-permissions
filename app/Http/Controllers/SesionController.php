@@ -55,11 +55,11 @@ class SesionController extends Controller
                 "message" => "Datos de sesion.",
                 "data" => $data,
             ], 200);
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return response()->json([
                 "success" => false,
-                "message" => "Error al obtener los datos de sesion.",
-            ], 500);
+                "message" => $e,
+            ], 400);
         }
     }
 
@@ -68,7 +68,7 @@ class SesionController extends Controller
         Auth::guard('api')->logout();
         return response()->json([
             "success" => false,
-            "message" => "Sesión cerrada.",
+            "message" => "Sesión cerrada exitosamente.",
         ], 200);
     }
 }
