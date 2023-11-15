@@ -25,26 +25,21 @@ class PermissionController extends Controller
 
             if (count($modules) > 0) {
                 return response()->json([
+                    "success" => true,
                     "message" => "Modulos disponibles en el sistema.",
-                    "type" => "success",
                     "data" => $modules,
-                    "status" => 200
                 ]);
             } else {
                 return response()->json([
+                    "success" => false,
                     "message" => "No hay modulos disponibles en el sistema.",
-                    "type" => "warning",
-                    "data" => null,
-                    "status" => 202
-                ]);
+                ], 404);
             }
         } catch (\Throwable $th) {
             return response()->json([
+                "success" => false,
                 "message" => "Error al obtener los modulos.",
-                "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
+            ], 500);
         }
     }
 
@@ -61,26 +56,21 @@ class PermissionController extends Controller
 
             if (count($modules) > 0) {
                 return response()->json([
+                    "success" => true,
                     "message" => "Submodulos disponibles en el sistema.",
-                    "type" => "success",
                     "data" => $modules,
-                    "status" => 200
-                ]);
+                ], 200);
             } else {
                 return response()->json([
+                    "success" => false,
                     "message" => "No hay submodulos disponibles en el sistema.",
-                    "type" => "warning",
-                    "data" => null,
-                    "status" => 404
-                ]);
+                ], 404);
             }
         } catch (\Throwable $th) {
             return response()->json([
+                "success" => false,
                 "message" => "Error al obtener los modulos.",
-                "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
+            ], 500);
         }
     }
 

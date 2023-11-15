@@ -5,7 +5,8 @@ export async function login(data) {
         const response = await coreApi(
             "/login",
             "POST",
-            data
+            data,
+            true
         );
 
         const result = await response.json();

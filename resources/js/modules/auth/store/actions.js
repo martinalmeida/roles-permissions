@@ -10,19 +10,27 @@ export const useActions = defineStore("auth.actions", () => {
 
     const setLogin = async (email, password) => {
         shared.setIsLoading(true);
+        let typeAlert = "danger";
         state.email = email;
         state.password = password;
+
         const response = await login({
             email: state.email,
             password: state.password
         });
-        await shared.setToken(response.authorisation.token);
+
+        if (response.success) {
+            shared.setToken(response.authorisation.token);
+            typeAlert = "success";
+        }
+
         shared.setIsLoading(false);
+
         shared.setAlert(
             true,
             "Inicio de sesión",
             "cerrar",
-            response.type,
+            typeAlert,
             response.message
         );
         return response;

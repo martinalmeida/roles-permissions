@@ -9,7 +9,7 @@ class SesionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'refresh', 'logout']]);
+        $this->middleware('auth:api', ['except' => ['login', 'logout']]);
     }
 
     public function login(Request $request)
@@ -25,26 +25,23 @@ class SesionController extends Controller
             if ($token && $user->status == 1) {
                 return response()->json([
                     "message" => "Bienvenido al sistema de gestión roles y permisos.",
-                    "type" => "success",
+                    "success" => true,
                     'authorisation' => [
                         'token' => $token,
                         'type' => 'bearer',
                     ],
-                    "status" => 200
-                ]);
+                ], 200);
             } else {
                 return response()->json([
                     "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
-                    "type" => "warning",
-                    "status" => 404
-                ]);
+                    "success" => false,
+                ], 401);
             }
         } catch (\Throwable $th) {
             return response()->json([
+                "success" => false,
                 "message" => "Error al iniciar sesión.",
-                "type" => "danger",
-                "status" => 404
-            ]);
+            ], 500);
         }
     }
 
@@ -66,19 +63,6 @@ class SesionController extends Controller
                 "status" => 404
             ]);
         }
-    }
-
-    public function refresh()
-    {
-        return response()->json([
-            "message" => "Bienvenido al sistema de gestión roles y permisos.",
-            'type' => 'success',
-            'authorisation' => [
-                'token' => Auth::guard('api')->refresh(),
-                'type' => 'bearer',
-            ],
-            "status" => 200
-        ]);
     }
 
     public function logout(Request $request)

@@ -15,7 +15,7 @@ export function useAuth() {
 
     const loginValidated = async () => {
         const response = await auth.setLogin(formInputs.value.email, formInputs.value.password);
-        if (await response.status === 200) {
+        if (response.success) {
             router.push({ name: "home-module" });
         }
     };
