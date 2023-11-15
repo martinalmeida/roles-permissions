@@ -23,7 +23,7 @@ export function useForm() {
 
     const saveData = async () => {
         const response = await companies.setCreateComapany(formInputs.value);
-        if (response.status === 200) {
+        if (response.success) {
             router.push({ name: "companys-index" });
         }
     };
