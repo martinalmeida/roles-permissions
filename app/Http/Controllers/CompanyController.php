@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Company;
 use App\Services\CompanyService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Requests\CreateCompanyRequest;

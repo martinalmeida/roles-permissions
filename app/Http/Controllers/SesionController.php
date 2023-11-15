@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,7 @@ class SesionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'logout']]);
+        $this->middleware('auth:api', ['except' => ['login','logout']]);
     }
 
     public function login(Request $request)
@@ -26,7 +27,7 @@ class SesionController extends Controller
                 return response()->json([
                     "message" => "Bienvenido al sistema de gestión roles y permisos.",
                     "success" => true,
-                    'authorisation' => [
+                    'authorization' => [
                         'token' => $token,
                         'type' => 'bearer',
                     ],

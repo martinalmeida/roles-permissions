@@ -4,12 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['create']]);
+    }
+
+
+    public function create(Request $request){
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'primer_apellido' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6',
+            ]);
+            $user = User::create([
+                'name' => $request->name,
+                'primer_apellido' => $request->primer_apellido,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $credentials = $request->only('name', 'primer_apellido', 'email', 'password');
+            $token = Auth::guard('api')->attempt($credentials);
+            return response()->json([
+                'message' => 'Usuario creado exitosamente.',
+                'user' => $user,
+                'authorization' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                ]
+            ], 201);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => $e,
+                "type" => "danger",
+                "data" => null,
+                "status" => 404
+            ]);
+        }
     }
 
     public function getUsers(Request $request)
@@ -31,33 +70,6 @@ class UserController extends Controller
             return response()->json([
                 "message" => "Error al obtener los usuarios.",
                 "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
-        }
-    }
-
-    public function create(Request $request)
-    {
-        try {
-            $request->validate([
-                'name' => 'required',
-                'description' => 'required',
-            ]);
-            User::create([
-                'name' => $request->name,
-                'description' => $request->description,
-            ]);
-            return response()->json([
-                "message" => "El usuario fue creado exitosamente!",
-                "type" => "success",
-                "data" => null,
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Revisa los datos ingresados y vuelve a intentar de nuevo.",
-                "type" => "warning",
                 "data" => null,
                 "status" => 404
             ]);

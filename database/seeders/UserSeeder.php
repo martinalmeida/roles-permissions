@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'a_paterno' => 'padmin',
-            'a_materno' => 'madmin',
+            'primer_apellido' => 'padmin',
+            'segundo_apellido' => 'madmin',
             'telefono' => 3182834018,
             'nombrefiscal' => 'Empresa XYZ',
             'direccionfiscal' => 'Dirección XYZ',
@@ -34,8 +34,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'user',
-            'a_paterno' => 'puser',
-            'a_materno' => 'muser',
+            'primer_apellido' => 'puser',
+            'segundo_apellido' => 'muser',
             'telefono' => 3182834018,
             'nombrefiscal' => 'Empresa XYZ',
             'direccionfiscal' => 'Dirección XYZ',
