@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
+import { useRouter } from "vue-router";
 import { useState } from "./state";
 import { login } from "@a/services";
 import { useSharedStore } from "@s/store/shared.js";
 
 export const useActions = defineStore("auth.actions", () => {
+    const router = useRouter();
     const state = useState();
 
     const shared = useSharedStore();
@@ -14,14 +16,15 @@ export const useActions = defineStore("auth.actions", () => {
         state.email = email;
         state.password = password;
 
-        const response = await login({
+        const { result, status } = await login({
             email: state.email,
             password: state.password
         });
 
-        if (response.success) {
-            shared.setToken(response.authorisation.token);
+        if (status === 200) {
+            shared.setToken(result.authorization.token);
             typeAlert = "success";
+            router.push({ name: "home-module" });
         }
 
         shared.setIsLoading(false);
@@ -31,9 +34,8 @@ export const useActions = defineStore("auth.actions", () => {
             "Inicio de sesión",
             "cerrar",
             typeAlert,
-            response.message
+            result.message
         );
-        return response;
     };
 
     return {

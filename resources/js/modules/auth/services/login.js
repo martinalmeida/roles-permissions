@@ -10,13 +10,13 @@ export async function login(data) {
         );
 
         const result = await response.json();
+        const status = response.status;
 
-        return result;
+        return { result, status };
 
     } catch (error) {
         return {
             message: "Ocurrió un error interno en el servidor.",
-            type: "danger",
             status: 500 // Código 500 Internal Server Error
         };
     }
