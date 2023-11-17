@@ -50,6 +50,6 @@ Route::controller(RolController::class)->group(function () {
 
 // Routes for users
 Route::controller(UserController::class)->group(function () {
-    Route::get('/getUsers', 'getUsers');
+    Route::get('/showUsers', 'show');
     Route::post('/createUser', 'create');
 });
