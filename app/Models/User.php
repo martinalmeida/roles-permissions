@@ -31,7 +31,7 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'status',
         'rol_id',
-        'nit'
+        'company_id'
     ];
 
     public function userRol(): BelongsTo

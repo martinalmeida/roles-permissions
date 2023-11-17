@@ -60,8 +60,8 @@ export const useActions = defineStore("shared.actions", () => {
     const setUser = async () => {
         const response = await dataSesion();
         state.user.name = response.data.name;
-        state.user.aPaterno = response.data.a_paterno;
-        state.user.aMaterno = response.data.a_materno;
+        state.user.primer_apellido = response.data.a_paterno;
+        state.user.segundo_apellido = response.data.a_materno;
         state.user.telefono = response.data.telefono;
         state.user.nombrefiscal = response.data.nombrefiscal;
         state.user.direccionfiscal = response.data.direccionfiscal;

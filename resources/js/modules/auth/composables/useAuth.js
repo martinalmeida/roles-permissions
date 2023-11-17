@@ -1,10 +1,8 @@
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import { useSharedStore } from "@s/store/shared.js";
 import { useAuthStore } from "@a/store/auth.js";
 
 export function useAuth() {
-    const router = useRouter();
     const shared = useSharedStore();
     const auth = useAuthStore();
 
@@ -13,12 +11,7 @@ export function useAuth() {
         password: "",
     });
 
-    const loginValidated = async () => {
-        const response = await auth.setLogin(formInputs.value.email, formInputs.value.password);
-        if (response.success) {
-            router.push({ name: "home-module" });
-        }
-    };
+    const loginValidated = async () => await auth.setLogin(formInputs.value.email, formInputs.value.password);
 
     onMounted(() => shared.setIsLoading(false));
 

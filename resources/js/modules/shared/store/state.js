@@ -22,8 +22,8 @@ export const useState = defineStore("shared.state", {
             },
             user: {
                 name: "",
-                aPaterno: "",
-                aMaterno: "",
+                primer_apellido: "",
+                segundo_apellido: "",
                 telefono: "",
                 nombrefiscal: "",
                 direccionfiscal: "",

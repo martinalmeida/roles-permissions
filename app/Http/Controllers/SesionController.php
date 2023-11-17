@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +9,7 @@ class SesionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','logout']]);
+        $this->middleware('auth:api', ['except' => ['login', 'logout']]);
     }
 
     public function login(Request $request)
@@ -26,7 +25,6 @@ class SesionController extends Controller
             if ($token && $user->status == 1) {
                 return response()->json([
                     "message" => "Bienvenido al sistema de gestión roles y permisos.",
-                    "success" => true,
                     'authorization' => [
                         'token' => $token,
                         'type' => 'bearer',
@@ -34,13 +32,11 @@ class SesionController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo.",
-                    "success" => false,
+                    "message" => "Las credenciales que ingresaste no son correctas, vuelve a intentarlo."
                 ], 401);
             }
         } catch (\Throwable $th) {
             return response()->json([
-                "success" => false,
                 "message" => "Error al iniciar sesión.",
             ], 500);
         }
@@ -51,13 +47,11 @@ class SesionController extends Controller
         try {
             $data = Auth::guard('api')->user();
             return response()->json([
-                "success" => true,
                 "message" => "Datos de sesion.",
                 "data" => $data,
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
-                "success" => false,
                 "message" => $e,
             ], 400);
         }
@@ -67,7 +61,6 @@ class SesionController extends Controller
     {
         Auth::guard('api')->logout();
         return response()->json([
-            "success" => false,
             "message" => "Sesión cerrada exitosamente.",
         ], 200);
     }
