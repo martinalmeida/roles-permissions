@@ -29,10 +29,10 @@ const props = defineProps({
                     height="100"
                 />
                 <h1 class="text-3xl font-bold text-blue-950 dark:text-white">
-                    {{ props.title }}
+                    {{ title }}
                 </h1>
                 <p class="text-gray-500 dark:text-gray-400">
-                    {{ props.subtitle }}
+                    {{ subtitle }}
                 </p>
             </div>
             <div class="m-6">

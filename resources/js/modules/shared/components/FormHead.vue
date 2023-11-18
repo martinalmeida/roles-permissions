@@ -20,10 +20,10 @@ const props = defineProps({
                 <h5
                     class="mb-2 text-2xl font-bold text-blue-950 dark:text-white flex-grow"
                 >
-                    {{ props.title }}
+                    {{ title }}
                 </h5>
                 <div class="flex space-x-2">
-                    <router-link :to="props.route">
+                    <router-link :to="route">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

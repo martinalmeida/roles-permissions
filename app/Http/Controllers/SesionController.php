@@ -37,7 +37,7 @@ class SesionController extends Controller
             }
         } catch (\Throwable $th) {
             return response()->json([
-                "message" => "Error al iniciar sesión.",
+                "message" => "Error al iniciar sesión intentalo de nuevo.",
             ], 500);
         }
     }

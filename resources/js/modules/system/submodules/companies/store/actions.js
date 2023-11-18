@@ -1,12 +1,18 @@
 import { defineStore } from "pinia";
+import { useRouter } from "vue-router";
 import { useState } from "./state";
 import { getCompanies, createCompany } from "@c/services";
 import { useSharedStore } from "@s/store/shared.js";
 
 export const useActions = defineStore("companies.actions", () => {
+    const router = useRouter();
     const state = useState();
-
     const shared = useSharedStore();
+
+    const actionVars = {
+        typeAlert: null,
+        messageAlert: null,
+    };
 
     const setGetCompanies = async () => {
         shared.setIsLoading(true);
@@ -17,9 +23,10 @@ export const useActions = defineStore("companies.actions", () => {
 
     const setCreateComapany = async (data) => {
         shared.setIsLoading(true);
+        actionVars.typeAlert = "danger";
         state.company = data;
         const fileObject = await shared.getFile;
-        const response = await createCompany({
+        const { result, status } = await createCompany({
             nit: state.company.nit,
             digito: state.company.digito,
             nombre: state.company.nombre,
@@ -34,15 +41,22 @@ export const useActions = defineStore("companies.actions", () => {
             email_logis: state.company.email_logis,
             image: fileObject,
         });
+
+        if (status === 200) {
+            router.push({ name: "companys-index" });
+            actionVars.typeAlert = "success";
+        }
+
+        actionVars.messageAlert = result.message;
         shared.setIsLoading(false);
+
         shared.setAlert(
             true,
             "Aletar de Empresa",
             "cerrar",
-            response.type,
-            response.message
+            actionVars.typeAlert,
+            actionVars.messageAlert
         );
-        return response;
     };
 
     return {

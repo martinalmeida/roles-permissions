@@ -34,9 +34,9 @@ const emits = defineEmits(["systemLogout", "closeModal"]);
                 </div>
             </div>
             <div class="mb-4 text-center">
-                <p>{{ props.name }}</p>
-                <p>{{ props.email }}</p>
-                <p>company_id: {{ props.company_id }}</p>
+                <p>{{ name }}</p>
+                <p>{{ email }}</p>
+                <p>company_id: {{ company_id }}</p>
             </div>
             <div class="flex justify-center">
                 <button

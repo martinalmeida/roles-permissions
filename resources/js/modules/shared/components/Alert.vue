@@ -39,7 +39,7 @@ const emits = defineEmits(["closeAlert"]);
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div
-                            v-if="props.type === 'success'"
+                            v-if="type === 'success'"
                             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10"
                         >
                             <svg
@@ -59,7 +59,7 @@ const emits = defineEmits(["closeAlert"]);
                         </div>
 
                         <div
-                            v-if="props.type === 'warning'"
+                            v-if="type === 'warning'"
                             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10"
                         >
                             <svg
@@ -79,7 +79,7 @@ const emits = defineEmits(["closeAlert"]);
                         </div>
 
                         <div
-                            v-if="props.type === 'danger'"
+                            v-if="type === 'danger'"
                             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
                         >
                             <svg
@@ -106,7 +106,7 @@ const emits = defineEmits(["closeAlert"]);
                                 class="text-lg leading-6 font-medium text-blue-950"
                                 id="modal-title"
                             >
-                                {{ props.title }}
+                                {{ title }}
                             </h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500">
@@ -120,12 +120,12 @@ const emits = defineEmits(["closeAlert"]);
                     class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
                 >
                     <button
-                        v-if="props.close"
+                        v-if="close"
                         type="button"
                         @click="$emit('closeAlert')"
                         class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     >
-                        {{ props.close }}
+                        {{ close }}
                     </button>
                 </div>
             </div>

@@ -1,9 +1,7 @@
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 import { useCompaniesStore } from "@c/store/companies.js";
 
 export function useForm() {
-    const router = useRouter();
     const companies = useCompaniesStore();
 
     const formInputs = ref({
@@ -21,12 +19,7 @@ export function useForm() {
         email_logis: "",
     });
 
-    const saveData = async () => {
-        const response = await companies.setCreateComapany(formInputs.value);
-        if (response.success) {
-            router.push({ name: "companys-index" });
-        }
-    };
+    const saveData = async () => await companies.setCreateComapany(formInputs.value);
 
     // Devolver las referencias reactivas como resultado del composable
     return { formInputs, saveData };

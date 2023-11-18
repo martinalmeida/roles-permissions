@@ -11,6 +11,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="number"
                         label="Nit de la empresa"
                         name="nit"
@@ -20,6 +21,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="number"
                         label="Digito de verificación"
                         name="digito"
@@ -29,6 +31,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="text"
                         label="Nombre de la empresa"
                         name="nombre"
@@ -38,6 +41,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="text"
                         label="Representante legal"
                         name="representante"
@@ -47,6 +51,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="number"
                         label="Teléfono de la empresa"
                         name="telefono"
@@ -56,6 +61,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="text"
                         label="Dirección de la empresa"
                         name="direccion"
@@ -65,6 +71,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
+                        empty=""
                         type="email"
                         label="Correo de la empresa"
                         name="email"
