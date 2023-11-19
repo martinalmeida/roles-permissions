@@ -5,12 +5,7 @@ import { useState } from "./state";
 export const useGetters = defineStore("auth.getters", () => {
     const state = useState();
 
-    const getEmail = computed(() => state.email);
+    const getForm = computed(() => state.form);
 
-    const getPassword = computed(() => state.password);
-
-    return {
-        getEmail,
-        getPassword,
-    };
+    return { getForm };
 });

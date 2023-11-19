@@ -7,34 +7,40 @@ import { useSharedStore } from "@s/store/shared.js";
 export const useActions = defineStore("auth.actions", () => {
     const router = useRouter();
     const state = useState();
-
     const shared = useSharedStore();
+
+    const actionVars = {
+        typeAlert: null,
+        messageAlert: null,
+    };
 
     const setLogin = async (email, password) => {
         shared.setIsLoading(true);
-        let typeAlert = "danger";
-        state.email = email;
-        state.password = password;
+        actionVars.typeAlert = "danger";
+        state.form.email = email;
+        state.form.password = password;
 
-        const { result, status } = await login({
-            email: state.email,
-            password: state.password
-        });
+        const data = {
+            email: state.form.email,
+            password: state.form.password,
+        };
+
+        const { result, status } = await login(data);
+        actionVars.messageAlert = result.message;
 
         if (status === 200) {
             shared.setToken(result.authorization.token);
-            typeAlert = "success";
+            actionVars.typeAlert = "success";
             router.push({ name: "home-module" });
         }
 
         shared.setIsLoading(false);
-
         shared.setAlert(
             true,
             "Inicio de sesión",
             "cerrar",
-            typeAlert,
-            result.message
+            actionVars.typeAlert,
+            actionVars.messageAlert
         );
     };
 

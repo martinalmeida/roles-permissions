@@ -15,13 +15,13 @@ const emits = defineEmits(["actionButton"]);
 
 <template>
     <button
-        v-if="props.type === 'login'"
+        v-if="type === 'login'"
         type="button"
         class="w-full rounded bg-rose-500 pt-2 pb-3 text-white hover:bg-rose-600 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
@@ -41,13 +41,13 @@ const emits = defineEmits(["actionButton"]);
         </div>
     </button>
     <button
-        v-if="props.type === 'save'"
+        v-if="type === 'save'"
         type="button"
         class="w-full rounded bg-rose-500 pt-2 pb-3 text-white hover:bg-rose-600 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
@@ -67,13 +67,13 @@ const emits = defineEmits(["actionButton"]);
         </div>
     </button>
     <button
-        v-if="props.type === 'edit'"
+        v-if="type === 'edit'"
         type="button"
         class="w-full rounded bg-cyan-500 pt-2 pb-3 text-white hover:bg-cyan-600 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
@@ -93,13 +93,13 @@ const emits = defineEmits(["actionButton"]);
         </div>
     </button>
     <button
-        v-if="props.type === 'permissions'"
+        v-if="type === 'permissions'"
         type="button"
         class="w-full rounded bg-green-500 pt-2 pb-3 text-white hover:bg-green-600 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
@@ -119,13 +119,13 @@ const emits = defineEmits(["actionButton"]);
         </div>
     </button>
     <button
-        v-if="props.type === 'state'"
+        v-if="type === 'state'"
         type="button"
         class="w-full rounded bg-indigo-800 pt-2 pb-3 text-white hover:bg-indigo-900 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
@@ -150,13 +150,13 @@ const emits = defineEmits(["actionButton"]);
         </div>
     </button>
     <button
-        v-if="props.type === 'delete'"
+        v-if="type === 'delete'"
         type="button"
         class="w-full rounded bg-blue-950 pt-2 pb-3 text-white hover:bg-blue-900 justify-center flex"
         @click="$emit('actionButton')"
     >
         <div class="mr-1">
-            {{ props.name }}
+            {{ name }}
         </div>
         <div>
             <svg
