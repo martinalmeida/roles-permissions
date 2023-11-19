@@ -4,34 +4,35 @@ import { useCompaniesStore } from "@c/store/companies.js";
 export function useForm() {
     const companies = useCompaniesStore();
 
-    const formInputs = ref({
-        nit: "",
-        digito: "",
-        nombre: "",
-        representante: "",
-        telefono: "",
-        direccion: "",
-        email: "",
-        pais: "",
-        ciudad: "",
-        contacto: "",
-        email_tec: "",
-        email_logis: "",
+    const form = ref({
+        imputs: {
+            nit: "",
+            digito: "",
+            nombre: "",
+            representante: "",
+            telefono: "",
+            direccion: "",
+            email: "",
+            pais: "",
+            ciudad: "",
+            contacto: "",
+            email_tec: "",
+            email_logis: "",
+        },
+        required: {
+            nit: "",
+            digito: "",
+            nombre: "",
+            representante: "",
+            telefono: "",
+            direccion: "",
+            email: "",
+            pais: "",
+        },
     });
 
-    const empty = ref({
-        nit: "",
-        digito: "",
-        nombre: "",
-        representante: "",
-        telefono: "",
-        direccion: "",
-        email: "",
-        pais: "",
-    });
-
-    const setEmptyForm = (message) => {
-        empty.value = {
+    const setEmpty = (message) => {
+        form.value.required = {
             nit: (message.nit?.toString() || "").slice(2, -2).replace(/'/g, ''),
             digito: (message.digito?.toString() || "").slice(2, -2).replace(/'/g, ''),
             nombre: (message.nombre?.toString() || "").slice(2, -2).replace(/'/g, ''),
@@ -44,12 +45,12 @@ export function useForm() {
     };
 
     const saveData = async () => {
-        const { result, status } = await companies.setCreateComapany(formInputs.value);
+        const { result, status } = await companies.setCreateComapany(form.value.imputs);
         if (status === 400) {
-            setEmptyForm(result.message);
+            setEmpty(result.message);
         }
     };
 
     // Devolver las referencias reactivas como resultado del composable
-    return { formInputs, empty, saveData };
+    return { form, saveData };
 }

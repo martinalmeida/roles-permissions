@@ -1,7 +1,7 @@
 <script setup>
 import { useForm } from "@c/composables";
 
-const { formInputs, empty, saveData } = useForm();
+const { form, saveData } = useForm();
 </script>
 
 <template>
@@ -11,81 +11,81 @@ const { formInputs, empty, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.nit"
+                        :empty="form.required.nit"
                         type="number"
                         label="Nit de la empresa"
                         name="nit"
-                        v-model="formInputs.nit"
+                        v-model="form.imputs.nit"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.digito"
+                        :empty="form.required.digito"
                         type="number"
                         label="Digito de verificación"
                         name="digito"
-                        v-model="formInputs.digito"
+                        v-model="form.imputs.digito"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.nombre"
+                        :empty="form.required.nombre"
                         type="text"
                         label="Nombre de la empresa"
                         name="nombre"
-                        v-model="formInputs.nombre"
+                        v-model="form.imputs.nombre"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.representante"
+                        :empty="form.required.representante"
                         type="text"
                         label="Representante legal"
                         name="representante"
-                        v-model="formInputs.representante"
+                        v-model="form.imputs.representante"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.telefono"
+                        :empty="form.required.telefono"
                         type="number"
                         label="Teléfono de la empresa"
                         name="telefono"
-                        v-model="formInputs.telefono"
+                        v-model="form.imputs.telefono"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.direccion"
+                        :empty="form.required.direccion"
                         type="text"
                         label="Dirección de la empresa"
                         name="direccion"
-                        v-model="formInputs.direccion"
+                        v-model="form.imputs.direccion"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.email"
+                        :empty="form.required.email"
                         type="email"
                         label="Correo de la empresa"
                         name="email"
-                        v-model="formInputs.email"
+                        v-model="form.imputs.email"
                     ></Input>
                 </div>
                 <div class="p-4">
                     <Input
                         required
-                        :empty="empty.pais"
+                        :empty="form.required.pais"
                         type="text"
                         label="Pais de la empresa"
                         name="pais"
-                        v-model="formInputs.pais"
+                        v-model="form.imputs.pais"
                     ></Input>
                 </div>
                 <div class="p-4">
@@ -93,7 +93,7 @@ const { formInputs, empty, saveData } = useForm();
                         type="text"
                         label="Ciudad de la empresa"
                         name="ciudad"
-                        v-model="formInputs.ciudad"
+                        v-model="form.imputs.ciudad"
                     ></Input>
                 </div>
                 <div class="p-4">
@@ -101,7 +101,7 @@ const { formInputs, empty, saveData } = useForm();
                         type="number"
                         label="Contacto de la empresa"
                         name="contacto"
-                        v-model="formInputs.contacto"
+                        v-model="form.imputs.contacto"
                     ></Input>
                 </div>
                 <div class="p-4">
@@ -109,7 +109,7 @@ const { formInputs, empty, saveData } = useForm();
                         type="text"
                         label="Correo de contacto de la empresa"
                         name="email_tec"
-                        v-model="formInputs.email_tec"
+                        v-model="form.imputs.email_tec"
                     ></Input>
                 </div>
                 <div class="p-4">
@@ -117,7 +117,7 @@ const { formInputs, empty, saveData } = useForm();
                         type="text"
                         label="Correo de logistica de la empresa"
                         name="email_logis"
-                        v-model="formInputs.email_logis"
+                        v-model="form.imputs.email_logis"
                     ></Input>
                 </div>
             </div>
