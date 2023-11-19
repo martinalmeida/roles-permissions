@@ -1,26 +1,20 @@
+<script setup>
+const props = defineProps({
+    items: {
+        type: Object,
+        required: true,
+    },
+});
+</script>
 <template>
     <table class="min-w-full leading-normal">
         <thead>
             <tr>
                 <th
+                    v-for="title in items.titles"
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
                 >
-                    User
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                    Rol
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                    Created at
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                    Status
+                    {{ title }}
                 </th>
             </tr>
         </thead>

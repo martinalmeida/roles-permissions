@@ -1,7 +1,7 @@
 <script setup>
 import { useTable } from "@c/composables";
 
-const { createCompany } = useTable();
+const { createCompany, items } = useTable();
 </script>
 
 <template>
@@ -9,6 +9,7 @@ const { createCompany } = useTable();
         <DataTable
             title="Listado de Empresas"
             create="Crear Empresa"
+            :items="items"
             @event-create="createCompany"
         ></DataTable>
     </article>
