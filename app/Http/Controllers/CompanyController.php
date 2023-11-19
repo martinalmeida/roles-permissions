@@ -16,9 +16,12 @@ class CompanyController extends Controller
         $this->middleware('auth:api');
     }
      
-    public function show(CompanyService $companyService)
+    public function show(Request $request,CompanyService $companyService)
     {
-        $companies = $companyService->showCompanies();
+        $companies = $companyService->showCompanies(
+            request()->input('search'), 
+            request()->input('page', 1)
+        );
         if ($companies){
             return response()->json(["message" => $companies,], 200);
         } else {

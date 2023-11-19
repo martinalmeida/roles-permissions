@@ -46,17 +46,25 @@ class CompanyService
         return $company; 
     }
 
-    public function showCompanies(): array
+    public function showCompanies(string $searchQuery, int $page): array
     {
+        $searchQuery = addcslashes($searchQuery, '%_');
+        $perPage = 10;
         $companies = Company::with('userStatus')
-            ->where('status', 1)
-            ->orWhere('status', 2)
+            ->where(function ($query) {
+                $query->where('status', 1)
+                    ->orWhere('status', 2);
+            })
+            ->when($searchQuery, function ($query, $searchQuery) {
+                $query->where(function ($query) use ($searchQuery) {
+                    $query->where('nombre', 'LIKE', '%' . $searchQuery . '%')
+                        ->orWhere('email', 'LIKE', '%' . $searchQuery . '%'); 
+                });
+            })
             ->orderBy('nit', 'asc')
-            ->get()
-            ->toArray();
+            ->paginate($perPage, ['*'], 'page', $page);
 
-        return $companies;
+        $companiesArray = $companies->toArray();
+        return $companiesArray;
     }
-    
-    
 }
