@@ -23,8 +23,8 @@ export const useActions = defineStore("companies.actions", () => {
 
     const setCreateComapany = async (data) => {
         shared.setIsLoading(true);
-        actionVars.typeAlert = "danger";
         state.company = data;
+
         const fileObject = await shared.getFile;
         const { result, status } = await createCompany({
             nit: state.company.nit,
@@ -45,11 +45,13 @@ export const useActions = defineStore("companies.actions", () => {
         if (status === 200) {
             router.push({ name: "companys-index" });
             actionVars.typeAlert = "success";
+            actionVars.messageAlert = result.message;
+        } else {
+            actionVars.typeAlert = "danger";
+            actionVars.messageAlert = "Ocurrio un error al intentar crear la empres.a";
         }
 
-        actionVars.messageAlert = result.message;
         shared.setIsLoading(false);
-
         shared.setAlert(
             true,
             "Aletar de Empresa",
@@ -57,6 +59,8 @@ export const useActions = defineStore("companies.actions", () => {
             actionVars.typeAlert,
             actionVars.messageAlert
         );
+
+        return { result, status };
     };
 
     return {

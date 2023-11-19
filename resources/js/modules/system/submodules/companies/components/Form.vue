@@ -1,7 +1,7 @@
 <script setup>
 import { useForm } from "@c/composables";
 
-const { formInputs, saveData } = useForm();
+const { formInputs, empty, saveData } = useForm();
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.nit"
                         type="number"
                         label="Nit de la empresa"
                         name="nit"
@@ -21,7 +21,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.digito"
                         type="number"
                         label="Digito de verificación"
                         name="digito"
@@ -31,7 +31,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.nombre"
                         type="text"
                         label="Nombre de la empresa"
                         name="nombre"
@@ -41,7 +41,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.representante"
                         type="text"
                         label="Representante legal"
                         name="representante"
@@ -51,7 +51,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.telefono"
                         type="number"
                         label="Teléfono de la empresa"
                         name="telefono"
@@ -61,7 +61,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.direccion"
                         type="text"
                         label="Dirección de la empresa"
                         name="direccion"
@@ -71,7 +71,7 @@ const { formInputs, saveData } = useForm();
                 <div class="p-4">
                     <Input
                         required
-                        empty=""
+                        :empty="empty.email"
                         type="email"
                         label="Correo de la empresa"
                         name="email"
@@ -80,6 +80,8 @@ const { formInputs, saveData } = useForm();
                 </div>
                 <div class="p-4">
                     <Input
+                        required
+                        :empty="empty.pais"
                         type="text"
                         label="Pais de la empresa"
                         name="pais"
