@@ -52,4 +52,6 @@ Route::controller(RolController::class)->group(function () {
 Route::controller(UserController::class)->group(function () {
     Route::get('/showUsers', 'show');
     Route::post('/createUser', 'create');
+    Route::put('/updateUser/{id}', 'update');
+    Route::delete('/deleteUser/{id}', 'delete');
 });

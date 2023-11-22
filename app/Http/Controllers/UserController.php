@@ -30,7 +30,7 @@ class UserController extends Controller
             ], 201);
 
         } else {
-            return response()->json(['message' => 'Error al crear usuario'], 500);
+            return response()->json(['message' => 'Error al crear usuario'], 400);
         }
     }
 
@@ -42,5 +42,25 @@ class UserController extends Controller
         } else {
             return response()->json(["message" => "Error al obtener la lista de usuarios."], 400);
         } 
+    }
+
+    public function update(Request $request, UserService $userService, $id)
+    {
+        $user = $userService->updateUser($request, $id);
+        if ($user) {
+            return response()->json(["message" => "Usuario actualizado exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al actualizar usuario."], 400);
+        }
+    }
+
+    public function delete(UserService $userService, $id)
+    {
+        $user = $userService->deleteUser($id);
+        if ($user) {
+            return response()->json(["message" => "Usuario eliminado exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al eliminar usuario."], 400);
+        }
     }
 }
