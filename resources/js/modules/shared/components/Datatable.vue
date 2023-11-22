@@ -12,6 +12,10 @@ const props = defineProps({
         type: String,
         required: false,
     },
+    items: {
+        type: Object,
+        required: true,
+    },
 });
 
 const emits = defineEmits(["eventCreate"]);
@@ -26,6 +30,6 @@ const emits = defineEmits(["eventCreate"]);
                 @event-create="$emit('eventCreate')"
             ></HeaderTable>
         </template>
-        <Table></Table>
+        <Table :items="items"></Table>
     </BodyTable>
 </template>
