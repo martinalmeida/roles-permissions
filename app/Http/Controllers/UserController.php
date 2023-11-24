@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 
 class UserController extends Controller
@@ -15,7 +15,7 @@ class UserController extends Controller
     }
 
 
-    public function create(CreateUserRequest $request, UserService $userService){
+    public function create(UserRequest $request, UserService $userService){
         $user = $userService->createUser($request->validated());
         if ($user) {
             $credentials = $request->only('name', 'primer_apellido', 'email', 'password');

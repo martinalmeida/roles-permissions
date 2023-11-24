@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\CompanyService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use App\Http\Requests\CreateCompanyRequest;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -29,7 +29,7 @@ class CompanyController extends Controller
         } 
     }
 
-    public function create(CreateCompanyRequest $request, CompanyService $companyService)
+    public function create(CompanyRequest $request, CompanyService $companyService)
     {  
         $company = $companyService->createCompany($request->validated());
         $company_image =$companyService->uploadImage($request, $company->id);

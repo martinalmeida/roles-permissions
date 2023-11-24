@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
+use App\Http\Requests\BaseRequest;
 
-class CreateCompanyRequest extends FormRequest
+class CompanyRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,17 +33,25 @@ class CreateCompanyRequest extends FormRequest
         ];
     }
 
-    public function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'message'   => $validator->errors()
-        ], 400));
-    }
-
-    public function messages()
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function customMessages(): array
     {
         return [
-            'email.unique' => 'La dirección de correo electrónico ya se encuentra registrada.',
+            'email.unique' => 'La dirección de correo electrónico ya se encuentra registrada.',
         ];
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->setCustomMessages($this->customMessages());
     }
 }
