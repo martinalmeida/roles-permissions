@@ -1,7 +1,7 @@
 <script setup>
-import BodyTable from "./DataTable/Body.vue";
-import HeaderTable from "./DataTable/Header.vue";
-import Table from "./DataTable/Table.vue";
+import { useDataTable } from "@s/composables";
+
+const { BodyTable, HeaderTable, Table } = useDataTable();
 
 const props = defineProps({
     title: {

@@ -1,17 +1,19 @@
-import { ref } from "vue";
-import { useSharedStore } from "@s/store/shared.js";
+import { defineAsyncComponent } from "vue";
 
-export function useDataTable(search) {
-    const shared = useSharedStore();
+export function useDataTable() {
 
-    const searchField = ref(search);
-    const searchValue = ref("");
+    const BodyTable = defineAsyncComponent(
+        () => import("@s/components/DataTable/Body.vue")
+    );
 
-    const showRow = (item) => {
-        shared.openModal(false);
-        shared.setDataTable(item);
-    };
+    const HeaderTable = defineAsyncComponent(
+        () => import("@s/components/DataTable/Header.vue")
+    );
+
+    const Table = defineAsyncComponent(
+        () => import("@s/components/DataTable/Table.vue")
+    );
 
     // Devolver las referencias reactivas como resultado del composable
-    return { searchField, searchValue, showRow };
+    return { BodyTable, HeaderTable, Table };
 }

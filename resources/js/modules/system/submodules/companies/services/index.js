@@ -1,2 +1,2 @@
-export * from "./getCompanies";
+export * from "./showCompany";
 export * from "./createCompany";

@@ -3,27 +3,10 @@ import { defineStore } from "pinia";
 export const useState = defineStore("companies.state", {
     state: () => {
         return {
-            getCompanies: [
-                {
-                    nit: 0,
-                    digito: "",
-                    nombre: "",
-                    representante: "",
-                    telefono: 0,
-                    direccion: "",
-                    email: "",
-                    pais: "",
-                    ciudad: "",
-                    contacto: "",
-                    email_tec: "",
-                    email_logis: "",
-                    image: "",
-                    status: "",
-                },
-            ],
             company: {
+                id: 0,
                 nit: 0,
-                digito: "",
+                digito: 0,
                 nombre: "",
                 representante: "",
                 telefono: 0,
@@ -31,12 +14,31 @@ export const useState = defineStore("companies.state", {
                 email: "",
                 pais: "",
                 ciudad: "",
-                contacto: "",
+                contacto: 0,
                 email_tec: "",
                 email_logis: "",
                 image: "",
-                status: "",
+                status: 0,
             },
+            getCompanies: [
+                {
+                    id: 0,
+                    nit: 0,
+                    digito: 0,
+                    nombre: "",
+                    representante: "",
+                    telefono: 0,
+                    direccion: "",
+                    email: "",
+                    pais: "",
+                    ciudad: "",
+                    contacto: 0,
+                    email_tec: "",
+                    email_logis: "",
+                    image: "",
+                    status: 0,
+                },
+            ],
         }
     },
 });
