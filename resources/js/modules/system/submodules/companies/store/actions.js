@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 import { useState } from "./state";
-import { getCompanies, createCompany } from "@c/services";
+import { showCompany, createCompany } from "@c/services";
 import { useSharedStore } from "@s/store/shared.js";
 
 export const useActions = defineStore("companies.actions", () => {
@@ -14,10 +14,10 @@ export const useActions = defineStore("companies.actions", () => {
         messageAlert: null,
     };
 
-    const setGetCompanies = async () => {
+    const setShowCompanies = async () => {
         shared.setIsLoading(true);
-        const response = await getCompanies();
-        state.getCompanies = response.data;
+        const response = await showCompany();
+        state.getCompanies = response.message.data;
         shared.setIsLoading(false);
     };
 
@@ -64,7 +64,7 @@ export const useActions = defineStore("companies.actions", () => {
     };
 
     return {
-        setGetCompanies,
+        setShowCompanies,
         setCreateComapany,
     };
 });

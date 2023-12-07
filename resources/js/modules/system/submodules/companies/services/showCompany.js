@@ -1,9 +1,9 @@
 import { coreApi } from "@/lib";
 
-export async function getCompanies() {
+export async function showCompany() {
     try {
         const response = await coreApi(
-            "/getCompanies",
+            "/showCompany?search=empresaA@example.com&page=1",
             "GET",
         );
 
