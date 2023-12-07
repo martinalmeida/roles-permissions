@@ -39,6 +39,26 @@ class CompanyController extends Controller
             return response()->json(["message" => "Error al crear la empresa."], 400);
         }
     }
+
+    public function update(Request $request, CompanyService $companyService, $id)
+    {
+        $company = $companyService->updateCompany($request, $id);
+        if ($company) {
+            return response()->json(["message" => "Empresa actualizada exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al actualizar la empresa."], 400);
+        }
+    }
+
+    public function delete(CompanyService $companyService, $id)
+    {
+        $company = $companyService->deleteCompany($id);
+        if ($company) {
+            return response()->json(["message" => "Empresa eliminada exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al eliminar la empresa."], 400);
+        }
+    }
 }
 
 

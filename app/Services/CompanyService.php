@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Company;
 use App\Http\Requests\CreateCompanyRequest;
+use Illuminate\Http\Request;
 
 class CompanyService
 {
@@ -66,5 +67,34 @@ class CompanyService
 
         $companiesArray = $companies->toArray();
         return $companiesArray;
+    }
+
+    public function updateCompany(Request $request, int $id): bool
+    {
+        $user = Company::findOrFail($id);
+        $updateResult = $user->update([
+            'nit' => $request->nit,
+            'digito' => $request->digito,
+            'nombre' => $request->nombre,
+            'representante' => $request->representante,
+            'telefono' => $request->telefono,
+            'direccion' => $request->direccion,
+            'email' => $request->email,
+            'pais' => $request->pais,
+            'ciudad' => $request->ciudad,
+            'contacto' => $request->contacto,
+            'email_tec' => $request->email_tec,
+            'email_logis' => $request->email_logis,
+        ]);
+        return $updateResult;
+    }
+
+    public function deleteCompany(int $id): bool
+    {
+        $company = Company::findOrFail($id);
+        $deleteResult = $company->update([
+            'status' => 0
+        ]);
+        return $deleteResult;
     }
 }

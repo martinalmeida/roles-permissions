@@ -40,6 +40,8 @@ Route::controller(PermissionController::class)->group(function () {
 Route::controller(CompanyController::class)->group(function () {
     Route::get('/showCompany', 'show');
     Route::post('/createCompany', 'create');
+    Route::put('/updateCompany/{id}', 'update');
+    Route::delete('/deleteCompany/{id}', 'delete');
 });
 
 // Routes for roles
