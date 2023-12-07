@@ -16,7 +16,7 @@ class CompanyController extends Controller
         $this->middleware('auth:api');
     }
      
-    public function show(Request $request,CompanyService $companyService)
+    public function show(Request $request, CompanyService $companyService)
     {
         $companies = $companyService->showCompanies(
             request()->input('search'), 
