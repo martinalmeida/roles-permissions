@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\RolService;
+use App\Http\Requests\RolRequest;
 use App\Models\Rol;
 use App\Models\SubModule;
 use App\Models\Permission;
@@ -14,62 +16,50 @@ class RolController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function getRoles(Request $request)
+    public function show(RolService $rolService)
     {
-        try {
-            $roles = Rol::with('userStatus')
-                ->where('status', 1)
-                ->orWhere('status', 2)
-                ->orderBy('id', 'asc')
-                ->get();
-
-            return response()->json([
-                "message" => "Roles encontrados en el sistema.",
-                "type" => "success",
-                "data" => $roles,
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Error al obtener los roles.",
-                "type" => "danger",
-                "data" => null,
-                "status" => 404
-            ]);
-        }
+        $roles = $rolService->showRols();
+        if ($roles){
+            return response()->json(["message" => $roles,], 200);
+        } else {
+            return response()->json(["message" => "Error al obtener la lista de roles."], 400);
+        } 
     }
 
-    public function create(Request $request)
+    public function create(RolRequest $request, RolService $rolService)
     {
-        try {
-            $request->validate([
-                'name' => 'required',
-                'description' => 'required',
-            ]);
-            $newrol = Rol::create([
-                'name' => $request->name,
-                'description' => $request->description,
-            ]);
+        $new_rol = $rolService->createRol($request->validated());
+        if ($new_rol) {
             $submodules = SubModule::get('id');
             foreach ($submodules as $submodule) {
                 Permission::create([
                     'sub_module_id' => $submodule->id,
-                    'rol_id' => $newrol->id,
+                    'rol_id' => $new_rol->id,
                 ]);
             }
-            return response()->json([
-                "message" => "El rol fue creado exitosamente!",
-                "type" => "success",
-                "data" => null,
-                "status" => 200
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Revisa los datos ingresados y vuelve a intentar de nuevo.",
-                "type" => "warning",
-                "data" => null,
-                "status" => 404
-            ]);
+            return response()->json(['message' => 'El rol fue creado exitosamente!'], 200);
+        } else {
+            return response()->json(['message' => 'Error al crear el rol'], 400);
+        } 
+    }
+
+    public function update(Request $request, RolService $rolService, $id)
+    {
+        $rol = $rolService->updateRole($request, $id);
+        if ($rol) {
+            return response()->json(["message" => "Rol actualizado exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al actualizar el rol."], 400);
+        }
+    }
+
+    public function delete(RolService $rolService, $id)
+    {
+        $rol = $rolService->deleteRole($id);
+        if ($rol) {
+            return response()->json(["message" => "Rol eliminado exitosamente."], 200);
+        } else {
+            return response()->json(["message" => "Error al eliminar el rol."], 400);
         }
     }
 }

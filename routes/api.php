@@ -44,8 +44,10 @@ Route::controller(CompanyController::class)->group(function () {
 
 // Routes for roles
 Route::controller(RolController::class)->group(function () {
-    Route::get('/getRoles', 'getRoles');
+    Route::get('/showRoles', 'show');
     Route::post('/createRole', 'create');
+    Route::put('/updateRole/{id}', 'update');
+    Route::delete('/deleteRole/{id}', 'delete');
 });
 
 // Routes for users
